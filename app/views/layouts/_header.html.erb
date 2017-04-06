@@ -6,14 +6,28 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>                        
       </button>
-      <a class="navbar-brand" href="#" style="font-weight: 900; font-family: Montserrat,sans-serif; font-size: 19px0; margin-left: 50px">YumYum</a>
+      <a class="navbar-brand" href="/" style="font-weight: 900; font-family: Montserrat,sans-serif; font-size: 19px0; margin-left: 50px">YumYum</a>
     </div>
     <div class="collapse navbar-collapse" id="myNavbar" style="margin-right: 50px">
 
       <ul class="nav navbar-nav navbar-right">
         <% if current_user.present? %>
           <li><%= link_to current_user.email, user_posts_path(current_user) %></li>
-          <li><%=  link_to "Sign Out", destroy_user_session_path, method: :delete %></li>
+          <li>
+            <div class="dropdown" style="margin:5px">
+              <button class="btn btn-default dropdown-toggle" type="button" id="menu1" data-toggle="dropdown" style="border: 0px;background-color: transparent;">Setting
+              </button>
+              <ul class="dropdown-menu dropdown-menu-right" role="menu" aria-labelledby="menu">
+                <li role="presentation"><a role="menuitem" tabindex="-1" href="#">My Posts</a></li>
+                <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Activities Log</a></li>
+                <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Manager Account</a></li>
+                <li role="presentation" class="divider"></li>
+                <li><%=  link_to "Sign Out", destroy_user_session_path, method: :delete %></li>
+              </ul>
+            </div>
+          </li>
+          
+          
         <% else %>  
           <li><%= link_to "Sign In", new_user_session_path %></li>
           <li><%= link_to "Sign Up", new_user_registration_path %></li>
