@@ -12,16 +12,45 @@
 
       <ul class="nav navbar-nav navbar-right">
         <% if current_user.present? %>
+          <li style="text-align: center;">
+            <form>
+              <input type="text" name="">
+            </form>
+          </li>
           <li><%= link_to current_user.email, user_posts_path(current_user) %></li>
+          
           <li>
-            <div class="dropdown" style="margin:5px">
-              <button class="btn btn-default dropdown-toggle" type="button" id="menu1" data-toggle="dropdown" style="border: 0px;background-color: transparent;">Setting
+            <div class="dropdown">
+
+              <button class="dropdown-toggle" type="button" id="menu1" data-toggle="dropdown" style="border: 0px;background-color: transparent;padding-top: 15px;padding-bottom: 15px;color: #777"><img src="/assets/notification.png">              </button>
+              <ul class="dropdown-menu dropdown-menu-right" role="menu" aria-labelledby="menu" style="width: 362px">
+                <li role="presentation" style="padding-top: 15px">
+                  <%= link_to 'ngoctrang_nguyen_thi started following you.', user_posts_path(current_user) %>                    
+                </li>
+                <hr style="margin-left: 20px;margin-right: 20px;padding: 0">
+                <li role="presentation" style="padding-top: 15px">
+                  <%= link_to 'ngoctrang_nguyen_thi started following you.', user_posts_path(current_user) %>                    
+                </li>
+                <hr style="margin-left: 20px;margin-right: 20px;padding: 0">
+                <li role="presentation" style="padding-top: 15px">
+                  <%= link_to 'ngoctrang_nguyen_thi started following you.', user_posts_path(current_user) %>                    
+                </li>
+                <hr style="margin-left: 20px;margin-right: 20px;padding: 0">
+                <li role="presentation" style="padding-bottom: 15px">
+                  <%= link_to 'ngoctrang_nguyen_thi started following you.', user_posts_path(current_user) %>                    
+                </li>
+              </ul>
+            </div>
+          </li>
+          <li>
+            <div class="dropdown">
+
+              <button class="dropdown-toggle" type="button" id="menu1" data-toggle="dropdown" style="border: 0px;background-color: transparent;padding-top: 15px;padding-bottom: 15px;color: #777"><img src="/assets/settings.png">
               </button>
               <ul class="dropdown-menu dropdown-menu-right" role="menu" aria-labelledby="menu">
-                <li role="presentation"><a role="menuitem" tabindex="-1" href="#">My Posts</a></li>
+                <li role="presentation"><%= link_to 'My Posts', user_posts_path(current_user) %></li>
                 <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Activities Log</a></li>
                 <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Manager Account</a></li>
-                <li role="presentation" class="divider"></li>
                 <li><%=  link_to "Sign Out", destroy_user_session_path, method: :delete %></li>
               </ul>
             </div>

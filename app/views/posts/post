@@ -1,0 +1,16 @@
+
+                        <tr>
+                          <td><%= link_to tags_path(user_id: current_user.id, post_id: post.id), method: :post do %>
+                              <input type="checkbox" name="" class="button-tag" data-user_id="<%= current_user.id %>" data-post_id="<%= post.id %>">
+                            <% end %>
+                          </td>
+                          
+                          <td><%= post.title %></td>
+                          <td><%= post.content %></td>
+                         
+                            <td><%= link_to 'Show', user_post_path(current_user, post) %></td>
+                          <% if current_user == post.user %>
+                            <td><%= link_to 'Edit', edit_user_post_path(current_user, post) %></td>
+                            <td><%= link_to 'Destroy', user_post_path(current_user, post), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                          <% end %>  
+                        </tr>
