@@ -11,10 +11,13 @@
     <div class="collapse navbar-collapse" id="myNavbar" style="margin-right: 50px">
 
       <ul class="nav navbar-nav navbar-right">
-        <li><a class="title" href="#" style="color: #FF9800;"> Login</a></li>
-        <li><a href="#" style="color: #FF9800;"> Register</a></li>
-        <li><a href="#"> About</a></li>
-        <li><a href="#"> Help</a></li>       
+        <% if current_user.present? %>
+          <li><%= link_to current_user.email, user_posts_path(current_user) %></li>
+          <li><%=  link_to "Sign Out", destroy_user_session_path, method: :delete %></li>
+        <% else %>  
+          <li><%= link_to "Sign In", new_user_session_path %></li>
+          <li><%= link_to "Sign Up", new_user_registration_path %></li>
+        <% end %>        
       </ul>
     </div>
   </div>

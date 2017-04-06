@@ -11,5 +11,6 @@ Rails.application.routes.draw do
   	member do
   		delete "delete"
   	end
-  end	
+  end
+  root 'static_pages#home'
 end
