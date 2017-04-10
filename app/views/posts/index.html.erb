@@ -7,19 +7,38 @@
                     <li style="padding: 10px 30px 10px;" >
                         <a class="title" style=" color: #777; text-decoration: none; " href="/">
                           <h4>
-                          <%= current_user.user_name %>
+                            <%= @user.user_name %>
                           </h4>
                         </a>
                     </li>
                     <li style="padding: 0px 30px 10px">
                       <% if current_user != @user%>
-                      <button class="btn btn-default" style="width: 100%">Following</button>
-                    <% end %>
+                        <div class="follow" style="text-decoration: none" onclick="follow()">
+                          <% if current_user.following?(@user)%>                          
+                            <%= form_for(current_user.active_relationships.find_by(followed_id: @user.id),
+                                    html: { method: :delete }) do |f| %>
+                              <%= f.submit "Unfollow", class: "btn btn-default" , style: 'width: 100%' %>
+                            <% end %>
+                          <% else %>  
+                            <%= form_for(current_user.active_relationships.build) do |f| %>
+                              <div><%= hidden_field_tag :followed_id, @user.id %></div>
+                              <%= f.submit "Follow", class: "btn btn-default", style: 'width: 100%' %>
+                            <% end %>
+                          <% end %>
+                         </div> 
+                      <% end %>
+                      <script type="text/javascript">
+                        function follow() {
+                          
+                        }
+                      </script>
+                       
                     </li>
                     
                     <li style="padding: 0px 30px 10px">
-                        <p style=" color: #777;"><%= current_user.following.count %> follwers</p>
+                        <p style=" color: #777;"><%= @user.followers.count %> followers </p>
                     </li>
+
                     <li style="padding: 0px 30px 10px">
                         <p style=" color: #777;"><%= @posts.count %>
                           <% if @posts.count > 0%> 
@@ -52,7 +71,7 @@
 
                   <div style="position: relative; margin-bottom: 20px">
                     <%= link_to  user_post_path(current_user, post) do %>
-                      <img src="http://s.iamafoodblog.com/wp-content/uploads/2017/03/IAM_2048.jpg" style="max-width: 735px;max-height: 483px">
+                      <img src="/assets/IAM_2048.jpg" style="max-width: 735px;max-height: 483px">
                     <% end %>
                     <%= link_to  user_post_path(current_user, post), style: 'background: #FFFC;color: #fff;text-align: left;font-size: 14px;padding: 10px;position: absolute;bottom: 20px;left: 20px;line-height: normal;width: 600px' do %>
                       <span style="color: #000;"><%= post.created_at %></span>

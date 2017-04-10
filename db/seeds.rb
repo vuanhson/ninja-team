@@ -6,9 +6,19 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 puts "Start Seed"
-User.create email: "bodoi@gmail.com", password: "12121212", password_confirmation: "12121212", user_name: "toanmx", address: "Nam Dinh"
+
+User.create email: "toantoan@gmail.com", password: "asdasd", password_confirmation: "12121212", user_name: "toanmx", address: "Nam Dinh"
+
+User.create email: "nganga@gmail.com", password: "asdasd", password_confirmation: "12121212", user_name: "nganga", address: "Nam Dinh"
+
 100.times do
-	User.create email: Faker::Internet.email, password: "123123123", password_confirmation: "123123123"
+	User.create email: Faker::Internet.email, password: "123123123", password_confirmation: "123123123", user_name: Faker::Name.name , address: Faker::Address.street_address
 end
 
 puts "Finish Seed"
+users = User.all
+user  = users.first
+following = users[2..50]
+followers = users[2..40]
+following.each { |followed| user.follow(followed) }
+followers.each { |follower| follower.follow(user) }
