@@ -1,5 +1,6 @@
 Rails.application.routes.draw do  
-  devise_for :users
+  resources :images
+  devise_for :users, :controllers => {:registrations => "users/registrations"}
   get 'login', to: 'static_pages#login'
   resources :users, only: :show do
   	resources :posts
@@ -12,5 +13,12 @@ Rails.application.routes.draw do
   		delete "delete"
   	end
   end
+   resources :users do
+    member do
+      get :following, :followers
+    end
+  end
+  resources :relationships,       only: [:create, :destroy]
+
   root 'static_pages#home'
 end

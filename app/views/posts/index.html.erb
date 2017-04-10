@@ -7,16 +7,27 @@
                     <li style="padding: 10px 30px 10px;" >
                         <a class="title" style=" color: #777; text-decoration: none; " href="/">
                           <h4>
-                            admin1@gmail.com
+                          <%= current_user.user_name %>
                           </h4>
                         </a>
                     </li>
+                    <li style="padding: 0px 30px 10px">
+                      <% if current_user != @user%>
+                      <button class="btn btn-default" style="width: 100%">Following</button>
+                    <% end %>
+                    </li>
                     
                     <li style="padding: 0px 30px 10px">
-                        <p style=" color: #777;">120 follwers</p>
+                        <p style=" color: #777;"><%= current_user.following.count %> follwers</p>
                     </li>
                     <li style="padding: 0px 30px 10px">
-                        <p style=" color: #777;">43 posts</p> 
+                        <p style=" color: #777;"><%= @posts.count %>
+                          <% if @posts.count > 0%> 
+                            posts
+                          <% else %>
+                            post
+                          <% end %>
+                        </p> 
                     </li>
                     <li style="padding: 0px 30px 10px">
                         <p style=" color: #777;">About</p>
@@ -30,10 +41,14 @@
             </div>
         </div>
         <div class="col-md-9">
-              <div class="page-heading">
-        <div class="row">
-            <div class="col-md-8">
-               <% @posts.each do |post| %>
+                <% if current_user == @user%>
+                  <%= render 'form', post: @post %> 
+                <% end %>
+                <% if @posts.count == 0 %>
+                  <h3 style="color: #777">Empty</h3>
+                <% end %>
+                <hr style="max-width: 725px">
+                <% @posts.each do |post| %>
 
                   <div style="position: relative; margin-bottom: 20px">
                     <%= link_to  user_post_path(current_user, post) do %>
@@ -41,53 +56,16 @@
                     <% end %>
                     <%= link_to  user_post_path(current_user, post), style: 'background: #FFFC;color: #fff;text-align: left;font-size: 14px;padding: 10px;position: absolute;bottom: 20px;left: 20px;line-height: normal;width: 600px' do %>
                       <span style="color: #000;"><%= post.created_at %></span>
-                      <span style="color: #000;float: right;"><img src="/assets/heart.png"> 61</span>
+                      <span style="color: #000;float: right;"><img src="/assets/heart.png"> 0</span>
                       <p style=" color: #000;font-size: 23px;font-weight: 900;margin-top: 10px;"> <%= post.title %></p>
                       <span style="color: #000;" ><%= post.content %></span>  
                     <% end %>
                   </div>                         
-              <% end %>      
+                <% end %>      
                
-              <% if current_user == User.find(params[:user_id]) %>
-                <%= link_to 'New Post', new_user_post_path %>
-              <% end %>  
-
-              <script type="text/javascript">
-                $(".button-tag").click(function(){
-                  if($(this).is(":checked")){
-                    checked_tag($(this).data("user_id"), $(this).data("post_id"))
-                  }
-                  else {
-
-                  }
-                })
-                function checked_tag(user_id, post_id){
-                 
-                  $.ajax({
-                    url: "/tags/",
-                    type: "POST",
-                    beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
-                    data: {user_id: user_id,post_id: post_id},
-                    dataType: "json",
-                    cache: false,
-                    success: function(){
-                       debugger
-                    },
-                    error: function(){
-                      alert("Fails!!");
-                    }
-                  })
-                } 
-                function un_checked_tag(user_id){
-
-                }
-
-
-
-              </script>
-            </div>
-        </div>    
-    </div>
+              
+                
+               
         </div>
     </div>
 </div>

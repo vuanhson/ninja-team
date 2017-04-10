@@ -14,3 +14,33 @@
                             <td><%= link_to 'Destroy', user_post_path(current_user, post), method: :delete, data: { confirm: 'Are you sure?' } %></td>
                           <% end %>  
                         </tr>
+                         <script type="text/javascript">
+                  $(".button-tag").click(function(){
+                    if($(this).is(":checked")){
+                      checked_tag($(this).data("user_id"), $(this).data("post_id"))
+                    }
+                    else {
+
+                    }
+                  })
+                  function checked_tag(user_id, post_id){
+                   
+                    $.ajax({
+                      url: "/tags/",
+                      type: "POST",
+                      beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
+                      data: {user_id: user_id,post_id: post_id},
+                      dataType: "json",
+                      cache: false,
+                      success: function(){
+                         debugger
+                      },
+                      error: function(){
+                        alert("Fails!!");
+                      }
+                    })
+                  } 
+                  function un_checked_tag(user_id){
+
+                  }
+                </script>

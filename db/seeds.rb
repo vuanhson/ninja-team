@@ -6,7 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 puts "Start Seed"
-User.create email: "admin@gmail.com", password: "12121212", password_confirmation: "12121212"
+User.create email: "bodoi@gmail.com", password: "12121212", password_confirmation: "12121212", user_name: "toanmx", address: "Nam Dinh"
 100.times do
 	User.create email: Faker::Internet.email, password: "123123123", password_confirmation: "123123123"
 end

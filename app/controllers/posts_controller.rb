@@ -5,6 +5,8 @@ class PostsController < ApplicationController
   # GET /posts.json
   def index
     @posts = User.find(params[:user_id]).posts
+    @post = Post.new
+    @user = User.find(params[:user_id])
   end
 
   # GET /posts/1
