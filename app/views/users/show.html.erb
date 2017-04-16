@@ -1,0 +1,40 @@
+<h1><%= @user.user_name%></h1>
+<p>Email: <%=@user.email%></p>
+<p>Join date: <%=@user.created_at%></p>
+<p>Address: <%=@user.address%></p>
+<p>Birthday: <%=@user.birth_day%></p>
+<p>Email: <%=@user.email%></p>
+<%= link_to 'Edit', edit_user_path(current_user) %>
+<div class="container">
+    
+    <div class="row" style="">
+        <div class="col-md-9">
+                <% if current_user == @user%>
+
+                <% end %>
+                <% if @posts.count == 0 %>
+                  <h3 style="color: #777">Empty</h3>
+                <% end %>
+                <hr style="max-width: 725px">
+                <% @posts.each do |post| %>
+
+                  <div style="position: relative; margin-bottom: 20px">
+                    <%= link_to  user_post_path(current_user, post) do %>
+                      <img src="http://s.iamafoodblog.com/wp-content/uploads/2017/03/IAM_2048.jpg" style="max-width: 735px;max-height: 483px">
+                    <% end %>
+                    <%= link_to  user_post_path(current_user, post), style: 'background: #FFFC;color: #fff;text-align: left;font-size: 14px;padding: 10px;position: absolute;bottom: 20px;left: 20px;line-height: normal;width: 600px' do %>
+                      <span style="color: #000;"><%= post.created_at %></span>
+                      <span style="color: #000;float: right;"><img src="/assets/heart.png"> 0</span>
+                      <p style=" color: #000;font-size: 23px;font-weight: 900;margin-top: 10px;"> <%= post.title %></p>
+                      <span style="color: #000;" ><%= post.content %></span>  
+                    <% end %>
+                  </div>                         
+                <% end %>      
+               
+              
+                
+               
+        </div>
+    </div>
+</div>
+
