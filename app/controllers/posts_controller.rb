@@ -4,9 +4,9 @@ class PostsController < ApplicationController
   # GET /posts
   # GET /posts.json
   def index
-    @posts = User.find(params[:user_id]).posts
-    @post = Post.new
     @user = User.find(params[:user_id])
+    @posts = @user.posts
+    @post = Post.new    
   end
 
   # GET /posts/1
@@ -71,6 +71,6 @@ class PostsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def post_params
-      params.require(:post).permit(:user_id, :title, :content)
+      params.require(:post).permit(:user_id, :content, :file)      
     end
 end
