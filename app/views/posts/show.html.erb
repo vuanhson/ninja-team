@@ -1,19 +1,12 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>User:</strong>
-  <%= @post.user_id %>
-</p>
-
-<p>
-  <strong>Title:</strong>
-  <%= @post.title %>
-</p>
-
-<p>
-  <strong>Content:</strong>
-  <%= @post.content %>
-</p>
-
-<%= link_to 'Edit', edit_user_post_path(current_user, @post) %> |
-<%= link_to 'Back', user_posts_path(current_user) %>
+<div class="container">
+	<div class="row" style="padding: 0px 80px 0px 80px;margin: 0px">
+		<div class="col-sm-8" >
+			<img src="/assets/IAM_2048.jpg" style="width: 100%">	
+			
+		</div>
+		<div class="col-sm-4" >
+			<p style="color: #777;text-decoration: none;font-size: 23px;padding: 3px 3px 5px 0px"><%= current_user.user_name %></p>
+			<hr>
+		</div>
+	</div>
+</div>

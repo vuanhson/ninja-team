@@ -10,23 +10,26 @@
       </ul>
     </div>
   <% end %>
-
+<style type="text/css">
+  input[type=file]{ 
+        color:transparent;
+    }
+</style>
     <%= f.hidden_field :user_id, value: current_user.id %>
     <div class="row">
         <div class="field col-md-6">
           <%= f.text_field :title , style: 'border: solid 1px #dbdbdb;border-radius: 15px;color: #262626;font-size: 14px;outline: none;padding: 3px 10px 3px 5px; width: 100%; margin: 20px 0px 10px 0px', placeholder: 'Title' %>
           <%= f.text_area :content, style: 'border: solid 1px #dbdbdb;border-radius: 15px;color: #262626;font-size: 14px;outline: none;padding: 3px 10px 3px 5px; width: 100%;', placeholder: 'Content' %>
-          
+          <div class="actions">
+            <%= f.submit "Post", class: "btn btn-default", style: 'width: 100%; margin-top: 20px' %>
+          </div>
         </div>
         <div class="field col-md-3" style="margin: 20px 0px 10px;height: 100%">
           
           <%= f.file_field :picture, style: 'margin-bottom: 13px' %>  
-          <button class="btn btn-default" style="width: 100%; margin-bottom: 0">Post</button>
         </div>
     </div>
   
 
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+  
 <% end %>

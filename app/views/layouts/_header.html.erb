@@ -17,7 +17,7 @@
               <input type="text" name="" style="border: solid 1px #dbdbdb;border-radius: 15px;color: #262626;font-size: 14px;outline: none;padding: 3px 10px 3px 26px;margin: 15px 0 15px 0" placeholder="Search">
             </form>
           </li>
-          <li><%= link_to current_user.email, user_posts_path(current_user) %></li>
+          <li><%= link_to t('hello') + current_user.email, user_posts_path(current_user) %></li>
           
           <li>
             <div class="dropdown">
