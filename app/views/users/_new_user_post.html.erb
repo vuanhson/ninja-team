@@ -1,0 +1,30 @@
+<%= form_for [:user, post], :url => new_user_post_path(user_id: current_user.id) do |f| %>
+  <% if post.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
+
+      <ul>
+      <% post.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+    <%= f.hidden_field :user_id, value: current_user.id %>
+    <div class="row">
+        <div class="field col-md-6">
+          
+          <%= f.text_area :content, style: 'border: solid 1px #dbdbdb;border-radius: 15px;color: #262626;font-size: 14px;outline: none;padding: 3px 10px 3px 5px; width: 100%;', placeholder: 'Content' %>
+          <div class="actions">
+            <%= f.submit "Post", class: "btn btn-default", style: 'width: 100%; margin-top: 20px' %>
+          </div>
+        </div>
+        <div class="field col-md-3" style="margin: 20px 0px 10px;height: 100%">
+          
+          <%= f.file_field :file, style: 'margin-bottom: 13px' %>  
+        </div>
+    </div>
+  
+
+  
+<% end %>
