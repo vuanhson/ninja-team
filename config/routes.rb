@@ -1,4 +1,6 @@
 Rails.application.routes.draw do  
+  get 'users/show'
+
   resources :images
   devise_for :users, :controllers => {:registrations => "users/registrations"}
   get 'login', to: 'static_pages#login'
