@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-3">
+    <div class="col-md-3" sty>
       <div class="block">
         <ul class="theme-meta" style="list-style: none;padding: 0px;">
           <li style="padding: 10px 30px 10px;">
@@ -57,27 +57,7 @@
       <% end %>
       <hr style="max-width: 725px">
         <% @posts.each do |post| %>
-          <div style="position: relative; margin-bottom: 20px">
-            <%= link_to  user_post_path(current_user, post) do %>
-              <img src="<%= post.file %>" style="max-width: 735px;max-height: 483px"/>
-              <%= link_to  user_post_path(current_user, post), style: 'background: #FFFC;color: #fff;text-align: left;font-size: 14px;padding: 10px;position: absolute;bottom: 20px;left: 20px;line-height: normal;width: 600px' do %>
-                <span style="color: #000;">
-                  <%= post.created_at.strftime("%B %d, %Y") %>
-                </span>
-                <span>
-                  <span style="color: #000;float: right;">
-                    <img src="/assets/heart.png"/>
-                  </span>
-                  <p style=" color: #000;font-size: 23px;font-weight: 900;margin-top: 10px;">
-                    <%= post.content %>
-                  </p>
-                  <span style="color: #000;">
-                    <%= post.content %>
-                  </span>
-                </span>
-              <% end %>
-            <% end %>
-          </div>
+          <%= render 'post', post: post %>
         <% end %>
       </hr>
     </div>
