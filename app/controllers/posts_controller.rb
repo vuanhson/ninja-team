@@ -6,7 +6,8 @@ class PostsController < ApplicationController
   def index
     @user = User.find(params[:user_id])
     @posts = @user.posts
-    @post = Post.new    
+    @post = Post.new
+    
   end
 
   # GET /posts/1
@@ -30,7 +31,7 @@ class PostsController < ApplicationController
 
     respond_to do |format|
       if @post.save
-        format.html { redirect_to user_posts_path(current_user), notice: 'Post was successfully created.' }
+        format.html { redirect_to user_path(current_user), notice: 'Post was successfully created.' }
         format.json { render :show, status: :created, location: @post }
       else
         format.html { render :new }
@@ -71,6 +72,6 @@ class PostsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def post_params
-      params.require(:post).permit(:user_id, :content, :file)      
+      params.require(:post).permit(:user_id, :content, :file)
     end
 end

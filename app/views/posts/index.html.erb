@@ -57,10 +57,11 @@
       <% end %>
       <hr style="max-width: 725px">
         <% @posts.each do |post| %>
-          <div style="position: relative; margin-bottom: 20px">
+          <div style="position: relative; margin-bottom: 20px;max-width: 635px;">
             <%= link_to  user_post_path(current_user, post) do %>
-              <img src="<%= post.file %>" style="max-width: 735px;max-height: 483px"/>
-              <%= link_to  user_post_path(current_user, post), style: 'background: #FFFC;color: #fff;text-align: left;font-size: 14px;padding: 10px;position: absolute;bottom: 20px;left: 20px;line-height: normal;width: 600px' do %>
+              <img src="<%= post.file %>" style="max-height: 483px"/>
+            <% end%>  
+              <%= link_to  user_post_path(current_user, post), style: 'background: #FFFC;color: #fff;text-align: left;font-size: 14px;padding: 10px;position: absolute;bottom: 20px;left: 20px;line-height: normal;width: 590px' do %>
                 <span style="color: #000;">
                   <%= post.created_at.strftime("%B %d, %Y") %>
                 </span>
@@ -76,7 +77,7 @@
                   </span>
                 </span>
               <% end %>
-            <% end %>
+            
           </div>
         <% end %>
       </hr>

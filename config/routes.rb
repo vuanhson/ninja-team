@@ -22,6 +22,7 @@ Rails.application.routes.draw do
   end
   resources :relationships, only: [:create, :destroy]
 
+  resources :likes, only: [:create, :destroy]
   root 'static_pages#home'
   
 end
