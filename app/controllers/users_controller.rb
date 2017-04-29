@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
+  include EmojiHelper
+  
   def show  	  
     if User.exists?(id: params[:id])
       @user = User.find(params[:id])

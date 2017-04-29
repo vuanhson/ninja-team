@@ -41,9 +41,6 @@ Login page
   font-family: 'Pacifico', cursive;
 }
 
-.login .content h4 {
-  color: #FFF;
-}
 
 .login .content .hint {
   color: #FFF;
@@ -58,11 +55,11 @@ Login page
 }
 
 .login .content .form-control {
-  
   background-color: #FFF;
-  height: 43px;
-  color: #dbdbdb;
+  height: 43px;color: #262626;
   border: solid 1px #dbdbdb;
+  width: 100%; 
+  padding-left:10px
 }
 
 
@@ -98,7 +95,7 @@ Login page
   float: left;
   font-weight: 600;
   font-size: 15px;
-  color: #FFF !important;
+  color: #6c7a8d;
 }
 
 .login-options .social-icons {

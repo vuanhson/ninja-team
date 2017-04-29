@@ -6,16 +6,26 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>                        
       </button>
-      <a class="navbar-brand" href="/" style="font-weight: 900; font-family: Montserrat,sans-serif; font-size: 19px0; margin-left: 50px">YumYum</a>
+      <div style="padding-top: 5px;display: inline-block;">
+        <a class="form-title" href="/" style="  color: #6c7a8d;
+  text-align: center;
+  font-size: 28px;
+  font-weight: 800 !important;
+  font-family: 'Pacifico', cursive;margin-top: 40px;text-decoration: none"><span>YumYum</span> </a>  
+      </div>
+      <div style="display: inline-block;margin-left: 150px">
+        <form style=" text-align: center;">
+              <input type="text" name="" style="border: solid 1px #dbdbdb;border-radius: 15px;color: #262626;font-size: 14px;outline: none;padding: 8px 10px 8px 26px;margin: 10px 0 10px 0" placeholder="Search">
+            </form>       
+      </div>
+      
     </div>
     <div class="collapse navbar-collapse" id="myNavbar" style="margin-right: 50px">
 
       <ul class="nav navbar-nav navbar-right">
         <% if current_user.present? %>
           <li style="text-align: center;">
-            <form>
-              <input type="text" name="" style="border: solid 1px #dbdbdb;border-radius: 15px;color: #262626;font-size: 14px;outline: none;padding: 3px 10px 3px 26px;margin: 15px 0 15px 0" placeholder="Search">
-            </form>
+               
           </li>
           <li><%= link_to current_user.email, user_path(current_user) %></li>
           
@@ -50,7 +60,7 @@
               <ul class="dropdown-menu dropdown-menu-right" role="menu" aria-labelledby="menu">
                 <li role="presentation"><%= link_to 'My Posts', user_posts_path(current_user) %></li>
                 <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Activities Log</a></li>
-                <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Manager Account</a></li>
+                <li role="presentation"><a role="menuitem" tabindex="-1" href="/users/edit">Manager Account</a></li>
                 <li><%=  link_to "Sign Out", destroy_user_session_path, method: :delete %></li>
               </ul>
             </div>

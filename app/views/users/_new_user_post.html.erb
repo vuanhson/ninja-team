@@ -3,14 +3,27 @@
   
     <%= f.hidden_field :user_id, value: current_user.id %>
     <div >
-        <div class="field " style="margin: 20px 10px ;padding-bottom: 10px">
+        <div class="field " style="margin: 20px 20px ;padding-bottom: 10px">
           
-          <%= f.text_area :content, style: 'border: solid 0px ;color: #262626;font-size: 14px;outline: none;padding: 3px 10px 3px 5px; width: 100%;resize: none', placeholder: 'Content' %>
+          <%= f.text_area :content, style: 'border: solid 0px ;color: #262626;font-size: 14px;outline: none;padding: 3px 10px 3px 5px; width: 100%;resize: none;font-family: Open Sans, sans-serif;', placeholder: 'Write something' %>
           <div class="actions" style="border-top: solid 1px #dbdbdb;padding: 20px 20px">
-            <div style="float: left;border: solid 2px #dbdbdb;">
+            <div style="float: left;">
+            <span style="position: relative;
+overflow: hidden;
+display: inline-block;">
+              <img src="/assets/picture.png">
+              <span>Upload a photo</span>
+               <%= f.file_field :file, style: 'position: absolute;
+top: 0;
+right: 0;
+margin: 0;
+opacity: 0;
+-ms-filter: alpha(opacity=0);
+font-size: 200px;
+direction: ltr;
+cursor: pointer;display: block;' %>  
+            </span>
               
-              <%= f.file_field :file, style: 'padding: 4px 30px',placeholder: 'Image' %>  
-
             </div>
             
             <%= f.submit "Post", class: "btn btn-default", style: 'float: right; padding: 8px 30px' %>

@@ -1,6 +1,7 @@
 class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, except: [:index, :show]
+
   # GET /posts
   # GET /posts.json
   def index
@@ -20,6 +21,8 @@ class PostsController < ApplicationController
   # GET /posts/new
   def new
     @post = Post.new
+    params[:content] = emojify(params[:content])
+    resource.update_attributes(params)
   end
 
   # GET /posts/1/edit

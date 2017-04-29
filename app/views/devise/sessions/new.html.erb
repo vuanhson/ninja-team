@@ -12,17 +12,12 @@
         </div>
         
           <div class="field">
-            <%= f.email_field :email,  style: 'background-color: #FFF;
-  height: 43px;
-  color: #262626;
-  border: solid 1px #dbdbdb;width: 100%; padding-left:10px', placeholder: 'Email'%>
+            <%= f.email_field :email,  style: 'background-color: #FFF;height: 43px;color: #262626;border: solid 1px #dbdbdb;width: 100%; padding-left:10px', placeholder: 'Email'%>
           </div>
 
           <div class="field">
-            <%= f.password_field :password, autocomplete: "off", style: 'background-color: #FFF;
-  height: 43px;
-  color: #262626;
-  border: solid 1px #dbdbdb;width: 100%; padding-left:10px', placeholder: 'Password' %>
+            <%= f.password_field :password, autocomplete: "off", style: 'background-color: #FFF;height: 43px;
+  color: #262626;border: solid 1px #dbdbdb;width: 100%; padding-left:10px', placeholder: 'Password' %>
           </div>
 
          
@@ -33,14 +28,14 @@
           
 
           <div class="form-actions">
-            <%= f.submit "Log in", class: 'btn btn-success uppercase'%>
+            <%= f.submit "Log in", class: 'btn btn-success uppercase', style: 'background-color: #6c7a8d; border: 0px'%>
             <% if devise_mapping.rememberable? -%>
               <label class="rememberme check">
                 <%= f.check_box :remember_me %>
-                <%= f.label :remember_me %>
+                <%= f.label :remember_me, style: 'color: #6c7a8d' %>
               </label>
             <% end -%> 
-            <a href="/users/password/new" id="forget-password" class="forget-password" style="margin-top: 15px">Forgot Password?</a>
+            <a href="/users/password/new" id="forget-password" class="forget-password" style="margin-top: 15px; color: #6c7a8d">Forgot Password?</a>
           </div>            
           <div class="login-options">
             <h4>Or login with</h4>
