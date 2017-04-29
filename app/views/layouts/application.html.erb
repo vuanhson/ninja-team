@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Funny Kitchen</title>
+    <title>YumYum</title>
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -17,10 +17,13 @@
     <link href="/assets/layout.css" rel="stylesheet" type="text/css"/>
     <link href="/assets/custom.css" rel="stylesheet" type="text/css"/>
     <link rel="stylesheet" type="text/css" href="https://code.jquery.com/jquery-2.2.3.min.js">
+    <link href="https://fonts.googleapis.com/css?family=Pacifico&amp;subset=vietnamese" rel="stylesheet"> 
   </head>
 
   <body>
+  <% if current_user.present? %>
     <%= render "/layouts/header" %>
+  <% end %>  
     <div     style="padding-top:80px">
         <%= yield %>    
     </div>

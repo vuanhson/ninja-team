@@ -2,9 +2,11 @@
 Login page
 ***/
 /* bg color */
+ 
 .login {
-  background-image: url("http://localhost:3000/food-background.jpg");
-  background-size: 100%;
+  background-image: url(/assets/food-illustration-social.jpg);
+  background-size: 100% ;
+  background-repeat: no-repeat;
 }
 
 .login .logo {
@@ -15,25 +17,28 @@ Login page
 }
 
 .login .content {
-  background-color: #f9f9f999;;
+  background-color: #FFF;
   -webkit-border-radius: 7px;
   -moz-border-radius: 7px;
   -ms-border-radius: 7px;
   -o-border-radius: 7px;
-  border-radius: 7px;
+  border-radius: 1px;
   width: 400px;
   margin: 10px 100px 20px auto;
   padding: 30px;
   padding-top: 10px;
   overflow: hidden;
   position: relative;
+  border: solid 1px #e6e6e6;
 }
 
 .login .content h3 {
   color: #FFF;
   text-align: center;
   font-size: 28px;
-  font-weight: 400 !important;
+  font-weight: 800 !important;
+  margin-top: 40px;
+  font-family: 'Pacifico', cursive;
 }
 
 .login .content h4 {
@@ -53,30 +58,14 @@ Login page
 }
 
 .login .content .form-control {
-  border: none;
-  background-color: #fff9;
+  
+  background-color: #FFF;
   height: 43px;
-  color: #272020;
-  border: 1px solid #dde3ec;
-}
-.login .content .form-control:focus, .login .content .form-control:active {
-  border: 1px solid #c3ccda;
-}
-.login .content .form-control::-moz-placeholder {
-  color: #8290a3;
-  opacity: 1;
-}
-.login .content .form-control:-ms-input-placeholder {
-  color: #8290a3;
-}
-.login .content .form-control::-webkit-input-placeholder {
-  color: #8290a3;
+  color: #dbdbdb;
+  border: solid 1px #dbdbdb;
 }
 
-.login .content select.form-control {
-  padding-left: 9px;
-  padding-right: 9px;
-}
+
 
 .login .content .forget-form {
   display: none;
@@ -88,7 +77,8 @@ Login page
 
 .login .content .form-title {
   font-weight: 300;
-  margin-bottom: 25px;
+  margin-bottom: 45px;
+  color: #6c7a8d
 }
 
 .login .content .form-actions {
@@ -116,28 +106,6 @@ Login page
   padding-top: 3px;
 }
 
-.login-options .social-icons li a {
-  border-radius: 15px 15px 15px 15px !important;
-  -moz-border-radius: 15px 15px 15px 15px !important;
-  -webkit-border-radius: 15px 15px 15px 15px !important;
-}
-
-.login .content .form-actions .checkbox {
-  margin-left: 0;
-  padding-left: 0;
-}
-
-.login .content .forget-form .form-actions {
-  border: 0;
-  margin-bottom: 0;
-  padding-bottom: 20px;
-}
-
-.login .content .register-form .form-actions {
-  border: 0;
-  margin-bottom: 0;
-  padding-bottom: 0px;
-}
 
 .login .content .form-actions .btn {
   margin-top: 1px;
@@ -156,10 +124,6 @@ Login page
   border: none;
 }
 
-.login .content .form-actions .btn-default:hover {
-  background-color: #fafaff;
-  color: #45b6af;
-}
 
 .login .content .forget-password {
   font-size: 14px;

@@ -1,5 +1,6 @@
 <div class="container">
-  <div class="row">
+  <% if (@user != nil) %>
+  <div class="row"> 
     <div class="col-md-3" sty>
       <div class="block">
         <ul class="theme-meta" style="list-style: none;padding: 0px;">
@@ -14,9 +15,9 @@
             <% if current_user != @user %>
               <div class="follow" id="follow_form" onclick="follow()" style="text-decoration: none">
                 <% if current_user.following?(@user) %>
-                  <%= render 'posts/unfollow' %>
+                  <%= render 'relationships/unfollow' %>
                 <% else %>
-                  <%= render 'posts/follow' %>
+                  <%= render 'relationships/follow' %>
                 <% end %>
               </div>
             <% end %>
@@ -57,9 +58,19 @@
       <% end %>
       <hr style="max-width: 725px">
         <% @posts.each do |post| %>
-          <%= render 'post', post: post %>
+          <%= render 'posts/post', post: post %>
         <% end %>
       </hr>
     </div>
   </div>
+  <% else %>  
+    <div class="container" style="text-align: center;">
+      <div class="content_error" style="">
+        <p>This account doesn't exist</p>
+        <a href="">Back</a>    
+      </div>
+      
+    </div>
+    
+  <% end %>
 </div>

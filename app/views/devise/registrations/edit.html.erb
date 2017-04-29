@@ -1,8 +1,32 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<div class="container" >
+<div class="row" style="margin: 70px;border: solid 1px #dbdbdb;">
+  <div style="display: inline-block;padding: 0;; " class="col-md-3">
+      <ul style="padding: 0;margin: 0;">
+        <li style="list-style: none;margin: 0;padding: 0;border: 0;">
+          <a href="/users/edit" style="border-left: 3px solid  #262626;display: block;font-size: 17px;height: 100%;
+    color: #262626;font-weight: 600;line-height: 20px;padding: 16px 16px 16px 30px;text-decoration: none">Edit Profile 
+
+          </a>
+        </li>
+        <li style="list-style: none;margin: 0;padding: 0;border: 0;">
+          <a href="" style="display: block;font-size: 17px;height: 100%;
+    color: #262626;font-weight: 600;line-height: 20px;padding: 16px 16px 16px 30px;text-decoration: none">Change Password 
+
+          </a>
+        </li>
+      </ul>
+      
+  </div>
+  <div style="display: inline-block;border-left: solid 1px #dbdbdb" class="col-md-9">
+    <h2>Edit <%= resource_name.to_s.humanize %></h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <%= devise_error_messages! %>
 
+  <div class="field">
+    <%= f.label :email %><br />
+    <%= f.email_field :email, autofocus: true %>
+  </div>
   <div class="field">
     <%= f.label :email %><br />
     <%= f.email_field :email, autofocus: true %>
@@ -41,3 +65,9 @@
 <p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
 
 <%= link_to "Back", :back %>
+    
+  </div>
+  
+</div>
+  
+</div>

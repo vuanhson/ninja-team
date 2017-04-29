@@ -1,9 +1,16 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
   def show  	  
-    @user = User.find(params[:id])
-  	@posts = @user.posts.order("created_at desc")
-    @post = Post.new  
+    if User.exists?(id: params[:id])
+      @user = User.find(params[:id])
+      @posts = @user.posts.order("created_at desc")
+      @post = Post.new  
+    end    
+  	
+  end
+
+  def feed 
+    
   end
 
   def edit    
@@ -33,3 +40,4 @@ class UsersController < ApplicationController
       params.require(:post).permit(:user_id, :content, :file)
     end
 end
+ 

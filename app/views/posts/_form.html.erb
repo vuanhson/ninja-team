@@ -1,4 +1,5 @@
-<%= form_for [:user, post] do |f| %>
+<div style="border: 1px solid #e6e6e6;border-radius: 3px;">
+  <%= form_for [:user, post] do |f| %>
   <% if post.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
@@ -28,3 +29,5 @@
 
   
 <% end %>
+</div>
+

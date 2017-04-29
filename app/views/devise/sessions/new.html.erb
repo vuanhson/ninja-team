@@ -4,7 +4,7 @@
     <div class="content">
 
       <%= form_for(resource, as: resource_name, url: session_path(resource_name), class: 'login-form' ) do |f| %>
-        <h3 class="form-title">Sign In</h3>
+        <h3 class="form-title">YumYum</h3>
         <div class="alert alert-danger display-hide">
           <button class="close" data-close="alert"></button>
           <span>
@@ -12,11 +12,17 @@
         </div>
         
           <div class="field">
-            <%= f.email_field :email, autofocus: true, class: 'form-control form-control-solid placeholder-no-fix', placeholder: 'Email'%>
+            <%= f.email_field :email,  style: 'background-color: #FFF;
+  height: 43px;
+  color: #262626;
+  border: solid 1px #dbdbdb;width: 100%; padding-left:10px', placeholder: 'Email'%>
           </div>
 
           <div class="field">
-            <%= f.password_field :password, autocomplete: "off", class: 'form-control form-control-solid placeholder-no-fix', placeholder: 'Password' %>
+            <%= f.password_field :password, autocomplete: "off", style: 'background-color: #FFF;
+  height: 43px;
+  color: #262626;
+  border: solid 1px #dbdbdb;width: 100%; padding-left:10px', placeholder: 'Password' %>
           </div>
 
          
