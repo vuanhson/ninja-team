@@ -1,32 +1,8 @@
-<%= form_for(comment) do |f| %>
-  <% if comment.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(comment.errors.count, "error") %> prohibited this comment from being saved:</h2>
-
-      <ul>
-      <% comment.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
+<% comment = Comment.new %>
+<%= form_for([post, post.comments.build], remote: true) do |f| %>
+  <%= f.hidden_field :user_id, value: current_user.id %>
+  <%= f.hidden_field :post_id, value: post.id %>
   <div class="field">
-    <%= f.label :user_id %>
-    <%= f.number_field :user_id %>
-  </div>
-
-  <div class="field">
-    <%= f.label :post_id %>
-    <%= f.number_field :post_id %>
-  </div>
-
-  <div class="field">
-    <%= f.label :content %>
-    <%= f.text_area :content %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit %>
+    <%= f.text_field :content , style: 'background: 0 0;border: none;color: #262626;outline: none;width: 100%;', placeholder: 'Add a comment...', id: "comment_content_#{post.id}", autocomplete: "off"%>
   </div>
 <% end %>

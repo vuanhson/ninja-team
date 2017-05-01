@@ -39,14 +39,17 @@ margin-left: -5px;"><%=  post.user.user_name%></a>
 
         </p>                             
         <ul style="margin: 0px;padding: 0px">
-          <li style="text-decoration: none;list-style: none;position: relative;word-wrap: break-word;">
+          <li style="text-decoration: none;list-style: none;position: relative;word-wrap: break-word;margin-bottom: 20px">
               <a  style=" color: #262626;font-weight: 600;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;padding-left: 5px;margin-left: -5px;font-size: 15px">
               <%= post.user.user_name %> 
-          </a>          
-          <span style="font-family: 'Open Sans', sans-serif;"><%= sanitize post.content %> </span>             
+              </a>          
+              <span style="font-family: 'Open Sans', sans-serif;"><%= sanitize post.content %> </span>             
           </li>
-
-          
+          <div id="comments_<%=post.id%>">
+            <% post.comments.each do |comment| %>
+              <%= render 'comments/comment', comment: comment %>                   
+            <% end %>  
+          </div>
         </ul>
         <hr>
                            
@@ -58,11 +61,10 @@ margin-left: -5px;"><%=  post.user.user_name%></a>
               <%= render 'likes/like' ,  post: post  %>
             <% end %>  
           </div>
-
-          <form style="width: 80%;display: inline-block">
-            <input type="" name="" style="background: 0 0;border: none;color: #262626;outline: none;width: 100%;" placeholder="Add a comment">  
-          </form>
           
+          <div style="width: 80%;display: inline-block">
+            <%= render 'comments/form' ,  post: post  %>
+          </div>
         </div> 
     </div>
 </div>

@@ -2,33 +2,34 @@
 <body class="login" >
   <div class="container">
     <div class="content">
+    
       <%= form_for(resource, as: resource_name, url: registration_path(resource_name), class: 'register-form') do |f| %>
-        <h3>Sign Up</h3>
+      <h3 class="form-title">YumYum</h3>
         <%= devise_error_messages! %>
         <p class="hint">
            Enter your personal details below:
         </p>
         <div class="field">
-          <%= f.text_field :user_name, placeholder: 'Full Name' %>
+          <%= f.text_field :user_name,style: 'background-color: #FFF;height: 43px;color: #262626;border: solid 1px #dbdbdb;width: 100%; padding-left:10px',  placeholder: 'Full Name' %>
         </div>
         <div class="field">
-          <%= f.text_field :address, placeholder: 'Address' %>
+          <%= f.text_field :address,style: 'background-color: #FFF;height: 43px;color: #262626;border: solid 1px #dbdbdb;width: 100%; padding-left:10px',  placeholder: 'Address' %>
         </div>
         <p class="hint">
            Enter your account details below:
         </p>
         <div class="field">
-          <%= f.email_field :email,  placeholder: 'Email' %>
+          <%= f.email_field :email,style: 'background-color: #FFF;height: 43px;color: #262626;border: solid 1px #dbdbdb;width: 100%; padding-left:10px',   placeholder: 'Email' %>
         </div>
         <div class="field">
-          <%= f.password_field :password, autocomplete: "off", class: 'form-control placeholder-no-fix', placeholder: 'Password'  %>
+          <%= f.password_field :password, autocomplete: "off", style: 'background-color: #FFF;height: 43px;color: #262626;border: solid 1px #dbdbdb;width: 100%; padding-left:10px',  placeholder: 'Password'  %>
         </div>
         <div class="field">
-          <%= f.password_field :password_confirmation, autocomplete: "off", class: 'form-control placeholder-no-fix', placeholder: 'Re-type Your Password'  %>
+          <%= f.password_field :password_confirmation, autocomplete: "off", style: 'background-color: #FFF;height: 43px;color: #262626;border: solid 1px #dbdbdb;width: 100%; padding-left:10px', placeholder: 'Re-type Your Password'  %>
         </div>
         <div class="form-actions">
           <a href="/users/sign_in"><button type="button" id="register-back-btn" class="btn btn-default">Back</button></a>
-           <%= f.submit "Sign up", class: 'btn btn-success uppercase pull-right'%>
+           <%= f.submit "Sign up", class: 'btn btn-success uppercase pull-right', style: 'background-color: #6c7a8d; border: 0px'%>
         </div>
       <% end %>
     </div>
