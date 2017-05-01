@@ -7,5 +7,8 @@ class StaticPagesController < ApplicationController
                      WHERE  follower_id = #{current_user.id}"
     	@posts = Post.where("user_id IN (#{following_ids})OR user_id = #{current_user.id}")
 	end
+	def search
+		
+	end
 
 end

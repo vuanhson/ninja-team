@@ -1,6 +1,7 @@
 Rails.application.routes.draw do  
   
   get 'users/show'
+  get 'search', to: 'static_pages#search'
   resources :images
   devise_for :users, :controllers => {:registrations => "users/registrations"}
   get 'login', to: 'static_pages#login'
