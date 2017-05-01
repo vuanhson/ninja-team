@@ -9,7 +9,11 @@
           <span style="position: relative;overflow: hidden;display: inline-block;">
             <img src="/assets/picture.png">
             <span>Upload a photo</span>
-             <%= f.file_field :file, style: 'position: absolute;top: 0;right: 0;margin: 0;opacity: 0;-ms-filter: alpha(opacity=0);font-size: 200px;direction: ltr;cursor: pointer;display: block;' %>  
+             <%= f.file_field :file,id: 'files', style: 'position: absolute;top: 0;right: 0;margin: 0;opacity: 0;-ms-filter: alpha(opacity=0);font-size: 200px;direction: ltr;cursor: pointer;display: block;', onchange: "readURL(this)", multiple: true  %>  
+             <div>
+              
+             </div>
+             
             </span>
           </div>
           <%= f.submit "Post", class: "btn btn-default", style: 'float: right; padding: 8px 30px' %>
@@ -17,15 +21,55 @@
 
       </div>
     </div>
-    <div class="image_upload" style="margin: 20px 20px ;padding-bottom: 10px">
-      <ul style="margin: 0;padding: 0">
-        <li style="list-style: none;margin: 0 5px 0 0;padding: 0;display: inline-block;">
-          <img src="/" style="width:  50px;height: 50px">
-        </li>
-        <li style="list-style: none;margin: 0;padding: 0;display: inline-block;">
-          <img src="/" style="width:  50px;height: 50px">
-        </li>
-      </ul>
-    </div>
+    <script type="text/javascript">
+      window.onload = function(){
+        
+    //Check File API support
+    if(window.File && window.FileList && window.FileReader)
+    {
+        var filesInput = document.getElementById("files");
+        
+        filesInput.addEventListener("change", function(event){
+            
+            var files = event.target.files; //FileList object
+            var output = document.getElementById("result");
+            
+            for(var i = 0; i< files.length; i++)
+            {
+                var file = files[i];
+                
+                //Only pics
+                if(!file.type.match('image'))
+                  continue;
+                
+                var picReader = new FileReader();
+                
+                picReader.addEventListener("load",function(event){
+                    
+                    var picFile = event.target;
+                    
+                    var div = document.createElement("div");
+                    div.style.display = "inline-block"
+                    div.innerHTML = "<img class='' style='width:70px;height:50px;margin: 0 5px 0 0;' src='" + picFile.result + "'" +
+                            "title='" + picFile.name + "'/>";
+                    
+                    output.insertBefore(div,null);            
+                
+                });
+                
+                 //Read the image
+                picReader.readAsDataURL(file);
+            }                               
+           
+        });
+    }
+    else
+    {
+        console.log("Your browser does not support File API");
+    }
+}
+    
+    </script>
+    <output id="result" style="margin: 20px" />  
   <% end %>
 </div>

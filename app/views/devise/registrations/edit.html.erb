@@ -1,5 +1,5 @@
 <div class="container" >
-<div class="row" style="margin: 70px;border: solid 1px #dbdbdb; border-radius: 10px;">
+<div class="row" style="margin: 70px;border: solid 1px #dbdbdb; border-radius: 3px;">
   <div style="display: inline-block;padding: 0;; " class="col-md-3">
       <ul style="padding: 0;margin: 0;">
         <li style="list-style: none;margin: 0;padding: 0;border: 0;">
@@ -24,16 +24,24 @@
   <%= devise_error_messages! %>
 
   <div class="field">
-    <%= f.label :user_name %><br />
-    <%= f.text_field :user_name %>
+    <div style="width: 30%; display: inline-block;">
+      <%= f.label :user_name , style: 'float: left' %>
+    </div>
+    
+    <%= f.text_field :user_name, style: 'background-color: #FFF;height: 43px;color: #262626;border: solid 1px #dbdbdb;   padding-left:10px; border-radius: 3px;width: 40%;' %>
   </div>
   <div class="field">
-    <%= f.label :address %><br />
-    <%= f.text_field :address %>
+    <div style="width: 30%; display: inline-block;">
+      <%= f.label :address , style: 'float: left' %>
+    </div>
+    
+    <%= f.text_field :address, style: 'background-color: #FFF;height: 43px;color: #262626;border: solid 1px #dbdbdb; padding-left:10px; border-radius: 3px;width: 40%;' %>
   </div>
   <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email%>
+    <div style="width: 30%; display: inline-block;">
+      <%= f.label :email , style: 'float: left' %>
+    </div>
+    <%= f.email_field :email, style: 'background-color: #FFF;height: 43px;color: #262626;border: solid 1px #dbdbdb; padding-left:10px; border-radius: 3px;width: 40%;' %>
   </div>
 
 
@@ -42,26 +50,30 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-    <%= f.password_field :password, autocomplete: "off" %>
-    <% if @minimum_password_length %>
-      <br />
-      <em><%= @minimum_password_length %> characters minimum</em>
-    <% end %>
+    <div style="width: 30%; display: inline-block;">
+      <%= f.label :password , style: 'float: left' %>
+    </div>
+    <%= f.password_field :password, autocomplete: "off", style: 'background-color: #FFF;height: 43px;color: #262626;border: solid 1px #dbdbdb; padding-left:10px; border-radius: 3px;width: 40%;' %>
+    
   </div>
 
   <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
+    <div style="width: 30%; display: inline-block;">
+      <%= f.label :password_confirmation, style: 'float: left' %>
+    </div>
+    
+    <%= f.password_field :password_confirmation, autocomplete: "off", style: 'background-color: #FFF;height: 43px;color: #262626;border: solid 1px #dbdbdb; padding-left:10px;width: 40%; border-radius: 3px' %>
   </div>
 
   <div class="field">
-    <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-    <%= f.password_field :current_password, autocomplete: "off" %>
+    <div style="width: 30%; display: inline-block;">
+      <%= f.label :current_password , style: 'float: left' %>
+    </div>
+    <%= f.password_field :current_password, autocomplete: "off" , style: 'background-color: #FFF;height: 43px;color: #262626;border: solid 1px #dbdbdb; padding-left:10px; border-radius: 3px;width: 40%;' %>
   </div>
 
   <div class="actions">
-    <%= f.submit "Submit" %>
+    <%= f.submit "Submit", class: 'btn btn-success uppercase', style: 'background-color: #6c7a8d; border: 0px;float: right;margin: 20px 40px'%>
   </div>
 <% end %>
 
