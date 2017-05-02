@@ -11,9 +11,12 @@
       <% if @posts.count == 0 %>
       <% end %>
       <hr style="max-width: 725px">
-      <% @posts.each do |post| %>
-        <%= render 'posts/post', post: post %>
-      <% end %>
+      <div id="post-list">
+        <% @posts.each do |post| %>
+          <%= render 'posts/post', post: post %>
+        <% end %>  
+      </div>
+      
       </hr style="max-width: 725px">
     </div>
     <div class="col-md-3">

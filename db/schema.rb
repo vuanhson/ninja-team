@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170428224937) do
+ActiveRecord::Schema.define(version: 20170502075115) do
 
   create_table "comments", force: :cascade do |t|
     t.integer  "user_id"
@@ -34,6 +34,16 @@ ActiveRecord::Schema.define(version: 20170428224937) do
     t.string   "post_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "notifications", force: :cascade do |t|
+    t.integer  "user_id"
+    t.string   "type_notification"
+    t.integer  "post_id"
+    t.boolean  "read"
+    t.integer  "x_user_id"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
   end
 
   create_table "posts", force: :cascade do |t|
@@ -77,6 +87,8 @@ ActiveRecord::Schema.define(version: 20170428224937) do
     t.string   "user_name"
     t.string   "address"
     t.datetime "birth_day"
+    t.string   "name"
+    t.string   "phonenumber"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

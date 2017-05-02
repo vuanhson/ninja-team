@@ -1,5 +1,6 @@
 Rails.application.routes.draw do  
   
+  resources :notifications
   get 'users/show'
   get 'search', to: 'static_pages#search'
   resources :images
@@ -28,5 +29,5 @@ Rails.application.routes.draw do
 
   resources :likes, only: [:create, :destroy]
   root 'static_pages#home'
-  
+  resources :notifications  
 end

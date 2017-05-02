@@ -6,15 +6,15 @@
         <div class="col-md-9">
               <div class="page-heading">
         <div class="row">
-
-        <% if current_user !=nil%>
-            <%= render 'users/new_user_post', post: @post %>
-        <% end %>
-        <% @posts.each do |post| %>
-          <%= render 'posts/post', post: post %>
-        <% end %>
+            <% if current_user !=nil%>
+                <%= render 'users/new_user_post', post: @post %>
+            <% end %>
+            <div dir="post-list">
+                <% @posts.each do |post| %>
+                    <%= render 'posts/post', post: post %>
+                <% end %>    
+            </div>        
         </div>    
-
     </div>
         </div>
     </div>
