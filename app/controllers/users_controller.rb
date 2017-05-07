@@ -6,23 +6,21 @@ class UsersController < ApplicationController
     @post = Post.new  
   end
 
-  def edit    
+  # def edit    
     
-    if (current_user == @user)
-  	 @user = current_user
-    end
-  end
+  #   if (current_user == @user)
+  # 	 @user = current_user
+  #   end
+  # end
 
-  def update
-    @user = User.find(params[:id])
-    if @user.update_attributes(user_params)
-      # Handle a successful update.
-      @posts = User.find(params[:id]).posts
-      render 'show'
-    else
-      render 'edit'
-    end
-  end
+  # def update
+  #   @user = User.find(params[:id])
+  #   if @user.update_attributes(user_params)
+  #     # Handle a successful update.
+  #     @posts = User.find(params[:id]).posts
+  #     render 'show'
+  #   end
+  # end
   private
 
     def user_params

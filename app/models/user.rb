@@ -24,7 +24,9 @@ class User < ApplicationRecord
                           foreign_key: "user_id",
                           dependent: :destroy
   has_many :likes, :foreign_key => "user_id", :dependent => :destroy   
-  has_many :liking, through: :active_likes, source: :post                          
+  has_many :liking, through: :active_likes, source: :post
+  validates_uniqueness_of :username
+  #validates :username, format: { with: /\A[a-z0-9]+\Z/ }
 
   def follow(other_user)
     following << other_user
