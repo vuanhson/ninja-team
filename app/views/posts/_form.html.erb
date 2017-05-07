@@ -1,33 +1,27 @@
-<div style="border: 1px solid #e6e6e6;border-radius: 3px;">
-  <%= form_for [:user, post] do |f| %>
-  <% if post.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
-
-      <ul>
-      <% post.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+<div style="border: 1px solid #e6e6e6;border-radius: 3px;width: 600px">
+  <%= form_for [:user, post],remote: true, :url => { :controller => "posts", :action => "create", user_id: current_user.id } do |f| %>
     <%= f.hidden_field :user_id, value: current_user.id %>
-    <div class="row">
-        <div class="field col-md-6">
-          
-          <%= f.text_area :content, style: 'border: solid 1px #dbdbdb;border-radius: 15px;color: #262626;font-size: 14px;outline: none;padding: 3px 10px 3px 5px; width: 100%;', placeholder: 'Content' %>
-          <div class="actions">
-            <%= f.submit "Post", class: "btn btn-default", style: 'width: 100%; margin-top: 20px' %>
+    <div>
+      <div class="field " style="margin: 20px 20px ;padding-bottom: 10px">
+        <%= f.text_area :content, style: 'border: solid 0px ;color: #262626;font-size: 14px;outline: none;padding: 3px 10px 3px 5px; width: 100%;resize: none;font-family: Open Sans, sans-serif;', placeholder: 'Write something' %>
+        <div class="actions" style="border-top: solid 1px #dbdbdb;padding: 20px 20px">
+          <div style="float: left;">
+          <span style="position: relative;overflow: hidden;display: inline-block;">
+            <img src="/assets/picture.png">
+            <span>Upload a photo</span>
+             <%= f.file_field :file, style: 'position: absolute;top: 0;right: 0;margin: 0;opacity: 0;-ms-filter: alpha(opacity=0);font-size: 200px;direction: ltr;cursor: pointer;display: block;' %>  
+             <div>
+              
+             </div>
+             
+            </span>
           </div>
+          <%= f.submit "Post", class: "btn btn-default", style: 'float: right; padding: 8px 30px' %>
         </div>
-        <div class="field col-md-3" style="margin: 20px 0px 10px;height: 100%">
-          
-          <%= f.file_field :file, style: 'margin-bottom: 13px' %>  
-        </div>
+
+      </div>
     </div>
-  
-
-  
-<% end %>
+    
+    
+  <% end %>
 </div>
-
