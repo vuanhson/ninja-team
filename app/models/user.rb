@@ -19,13 +19,14 @@ class User < ApplicationRecord
   has_many :relationships, :foreign_key => "follower_id",
                            :dependent => :destroy                      
 
-  has_many :posts
+  has_many :posts, dependent: :destroy
   has_many :active_likes, class_name: "Like",
                           foreign_key: "user_id",
                           dependent: :destroy
   has_many :likes, :foreign_key => "user_id", :dependent => :destroy   
   has_many :liking, through: :active_likes, source: :post                          
-
+  has_many :comments, dependent: :destroy
+  
   def follow(other_user)
     following << other_user
   end

@@ -1,10 +1,7 @@
 <%= form_for(current_user.active_likes.build, remote: true) do |f| %>
-  <div><%= hidden_field_tag :post_id, post.id %></div>
-  <div><%= hidden_field_tag :user_id, current_user.id %></div>
-  <button style="color: #000;float: right;background-color: transparent;border: 0px" type="submit">
-	<span >
-	  <%= post.liking_users.count %> &nbsp;&nbsp;
-	  <img src="/assets/like.png"/>  
-	</span>  
+  <%= hidden_field_tag :post_id, post.id %>
+  <%= hidden_field_tag :user_id, current_user.id %>
+  <button style="background-color: transparent;border: 0px" type="submit">	
+	  <img src="/assets/like.png"/>  	
   </button>
 <% end %>

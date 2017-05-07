@@ -1,9 +1,14 @@
 Rails.application.routes.draw do  
+  
+  resources :notifications
   get 'users/show'
-
+  get 'search', to: 'static_pages#search'
   resources :images
   devise_for :users, :controllers => {:registrations => "users/registrations"}
   get 'login', to: 'static_pages#login'
+  resources :posts do
+    resources :comments
+  end
   resources :users, only: :show do
   	resources :posts
   end
@@ -24,5 +29,5 @@ Rails.application.routes.draw do
 
   resources :likes, only: [:create, :destroy]
   root 'static_pages#home'
-  
+  resources :notifications  
 end

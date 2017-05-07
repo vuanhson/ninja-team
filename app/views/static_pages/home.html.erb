@@ -2,33 +2,19 @@
     
     <div class="row" style="">
         <div class="col-md-3">
-            <div class="block" style="background: #f2f4f5;font-size: 15px;padding: 0 0px;border-radius: 3px;">
-                <ul class="theme-meta" style="list-style: none;padding: 0px;">
-                    <li style="padding: 10px 30px 10px;" >
-                        <a class="title" style="font-family: Montserrat,sans-serif;  color: #777; text-decoration: none; " href="#">
-                          <h3>
-                            Level Basic
-                          </h3>
-                        </a>
-                    </li>
-                    
-                    <li style="padding: 10px 30px 10px">
-                        <a class="title" style="font-family: Montserrat,sans-serif;  color: #777; text-decoration: none; " href="#"></a>
-                    </li>
-                    
-                </ul>
-            </div>
         </div>
         <div class="col-md-9">
               <div class="page-heading">
         <div class="row">
-            <div class="col-md-8">
-                <h1 style=" font-family: Montserrat,sans-serif; font-weight: 900; color: #777;"> Level index</h1>
-                <h4 style=" font-family: Montserrat,sans-serif;  color: #777;" >Hi, trang. You're in Level Basic Assignment 1. Here's your study plan.</h4>
-            </div>
-            
+            <% if current_user !=nil%>
+                <%= render 'users/new_user_post', post: @post %>
+            <% end %>
+            <div dir="post-list">
+                <% @posts.each do |post| %>
+                    <%= render 'posts/post', post: post %>
+                <% end %>    
+            </div>        
         </div>    
-
     </div>
         </div>
     </div>

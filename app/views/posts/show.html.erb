@@ -1,12 +1,13 @@
 <div class="container">
-	<div class="row" style="padding: 0px 80px 0px 80px;margin: 0px">
-		<div class="col-sm-8" >
-			<img src="<%= @post.file %>" style="width: 100%">	
-			
+	<% if @post != nil%>
+	<div class="row" style="padding: 0px 0px 0px 80px;margin: 0px">
+		<div class="col-sm-8" style="background-color: #1d2129;text-align: center;">
+			<img src="<%= @post.file %>" style="max-height: 483px">				
 		</div>
 		<div class="col-sm-4" >
-			<p style="color: #777;text-decoration: none;font-size: 23px;padding: 3px 3px 5px 0px"><%= current_user.user_name %></p>
+			
 			<hr>
 		</div>
 	</div>
+	<% end %>
 </div>

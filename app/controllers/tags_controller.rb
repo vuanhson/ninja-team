@@ -11,7 +11,7 @@ class TagsController < ApplicationController
 	def delete
 		Tag.destroy user_id: params[user_id], post_id: params[post_id]
 	end
-
+	
 	private 
 	def set_tag
 		@tag = Tag.find_by params[:id]
