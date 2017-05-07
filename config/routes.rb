@@ -29,5 +29,8 @@ Rails.application.routes.draw do
 
   resources :likes, only: [:create, :destroy]
   root 'static_pages#home'
+  get 'get_started/avatar', to: 'static_pages#preset_avatar'
+  get 'get_started/find_friend', to: 'static_pages#find_friend'
+  get 'get_started/details_infor', to: 'static_pages#find_friend'
   resources :notifications  
 end

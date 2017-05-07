@@ -7,11 +7,21 @@ class StaticPagesController < ApplicationController
                      WHERE  follower_id = #{current_user.id}"
     	@posts = Post.where("user_id IN (#{following_ids})OR user_id = #{current_user.id}").order("created_at desc")
 	end
+
 	def search
 		
 	end
+
 	def preset_avatar
 
+	end
+
+	def preset_user_infor
+		
+	end
+
+	def find_friend
+		
 	end
 
 end

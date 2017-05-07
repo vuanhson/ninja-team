@@ -6,12 +6,12 @@
     </div>
     <div class="col-md-6">
       <% if current_user == @user %>
-        <%= render 'new_user_post', post: @post %>
+        <%= render 'posts/form', post: @post %>
       <% end %>
       <% if @posts.count == 0 %>
       <% end %>
       <hr style="max-width: 725px">
-      <div id="post-list">
+      <div id="postlist">
         <% @posts.each do |post| %>
           <%= render 'posts/post', post: post %>
         <% end %>  
