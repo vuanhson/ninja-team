@@ -7,7 +7,7 @@
         <% @data.each do |obj|%>
         <li class="item">
           <a href="<%= %>">
-            <img style="width: 100%" src="<%= obj.file%>"/>
+            <img alt="image" style="width: 100%" src="<%= defined? obj.file ? obj.file : ''%>"/>
             <div class="title"><%= obj.title%></div>
           </a>
           <div class="reaction">
