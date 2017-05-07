@@ -1,0 +1,7 @@
+<%= form_for(current_user.active_likes.find_by(post_id: post.id),
+        html: { method: :delete }, remote: true)  do |f| %>
+  <%= hidden_field_tag :post_id, post.id %>    
+  <button style="background-color: transparent;border: 0px" type="submit">
+	  <img src="/assets/liked.png"/>  	 
+  </button>
+<% end %>

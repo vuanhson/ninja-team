@@ -1,0 +1,8 @@
+<% comment = Comment.new %>
+<%= form_for([post, post.comments.build], remote: true) do |f| %>
+  <%= f.hidden_field :user_id, value: current_user.id %>
+  <%= f.hidden_field :post_id, value: post.id %>
+  <div class="field">
+    <%= f.text_field :content , style: 'background: 0 0;border: none;color: #262626;outline: none;width: 100%;', placeholder: 'Add a comment...', id: "comment_content_#{post.id}", autocomplete: "off"%>
+  </div>
+<% end %>

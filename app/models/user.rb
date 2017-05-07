@@ -3,8 +3,9 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
-  has_many :posts
+  
   has_many :tags 
+
   has_many :active_relationships, class_name:  "Relationship",
                                   foreign_key: "follower_id",
                                   dependent:   :destroy
@@ -14,10 +15,18 @@ class User < ApplicationRecord
                                 
   has_many :following, through: :active_relationships, source: :followed          
   has_many :followers, through: :passive_relationships, source: :follower
-  has_many :relationships, :foreign_key => "follower_id",
-                       :dependent => :destroy                      
-  has_many :likes        
 
+  has_many :relationships, :foreign_key => "follower_id",
+                           :dependent => :destroy                      
+
+  has_many :posts, dependent: :destroy
+  has_many :active_likes, class_name: "Like",
+                          foreign_key: "user_id",
+                          dependent: :destroy
+  has_many :likes, :foreign_key => "user_id", :dependent => :destroy   
+  has_many :liking, through: :active_likes, source: :post                          
+  has_many :comments, dependent: :destroy
+  
   def follow(other_user)
     following << other_user
   end
@@ -32,4 +41,15 @@ class User < ApplicationRecord
     following.include?(other_user)
   end
 
+  def like(post)
+    liking << post
+  end
+
+  def unlike(post)
+    liking.delete(post)
+  end
+
+  def liking?(post)
+    liking.include?(post)
+  end
 end

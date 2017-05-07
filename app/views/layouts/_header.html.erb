@@ -1,4 +1,4 @@
-<nav class="navbar navbar-default" style="border-radius: 0px; background-color: #FFF;">
+<nav class="navbar navbar-default navbar-fixed-top" style="border-radius: 0px; background-color: #FFF;">
   <div class="container">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
@@ -6,38 +6,57 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>                        
       </button>
-      <a class="navbar-brand" href="/" style="font-weight: 900; font-family: Montserrat,sans-serif; font-size: 19px0; margin-left: 50px">YumYum</a>
+      <div style="padding-top: 5px;display: inline-block;">
+        <a class="form-title" href="/" style="  color: #6c7a8d;
+  text-align: center;
+  font-size: 28px;
+  font-weight: 800 !important;
+  font-family: 'Pacifico', cursive;margin-top: 40px;text-decoration: none"><span>YumYum</span> </a>  
+      </div>
+      <div style="display: inline-block;margin-left: 150px">
+        <form style=" text-align: center;">
+              <input type="text" name="" style="border: solid 1px #dbdbdb;border-radius: 3px;color: #262626;font-size: 14px;outline: none;padding: 8px 10px 8px 26px;margin: 10px 0 10px 0" placeholder="Search">
+            </form>       
+      </div>
+      
     </div>
     <div class="collapse navbar-collapse" id="myNavbar" style="margin-right: 50px">
 
       <ul class="nav navbar-nav navbar-right">
         <% if current_user.present? %>
           <li style="text-align: center;">
-            <form>
-              <input type="text" name="" style="border: solid 1px #dbdbdb;border-radius: 15px;color: #262626;font-size: 14px;outline: none;padding: 3px 10px 3px 26px;margin: 15px 0 15px 0" placeholder="Search">
-            </form>
+               
           </li>
-          <li><%= link_to t('hello') + current_user.email, user_posts_path(current_user) %></li>
+          <li><%= link_to current_user.email, user_path(current_user) %></li>
           
           <li>
             <div class="dropdown">
 
               <button class="dropdown-toggle" type="button" id="menu1" data-toggle="dropdown" style="border: 0px;background-color: transparent;padding-top: 15px;padding-bottom: 15px;color: #777"><img src="/assets/notification.png">              </button>
-              <ul class="dropdown-menu dropdown-menu-right" role="menu" aria-labelledby="menu" style="width: 362px">
-                <li role="presentation" style="padding-top: 15px">
-                  <%= link_to 'ngoctrang_nguyen_thi started following you.', user_posts_path(current_user) %>                    
+              <ul class="dropdown-menu dropdown-menu-right" role="menu" aria-labelledby="menu" style="width: 502px">
+                <li role="presentation" style="">
+                  <img src="/assets/preview.png" style="width: 40px;height: 40px; display: inline-block; margin: 0 0 0 12px">
+                  <a href="" style="padding: 15px !important;display: inline-block;">ngoctrang_nguyen_thi started following you.
+                  </a> 
+                  <div style="width: 80px;float: right;margin: 16px">
+                    <%= render 'relationships/follow'%>  
+                  </div>
+                  
+                  <%= link_to '', user_posts_path(current_user) %>                    
                 </li>
-                <hr style="margin-left: 20px;margin-right: 20px;padding: 0">
-                <li role="presentation" style="padding-top: 15px">
-                  <%= link_to 'ngoctrang_nguyen_thi started following you.', user_posts_path(current_user) %>                    
+                <li role="presentation" style="">
+                  <img src="/assets/preview.png" style="width: 40px;height: 40px; display: inline-block; margin: 0px 0px 0 10px">
+                  <a href="" style="padding: 15px !important;display: inline-block;">ngoctrang_nguyen_thi liked your post.
+                  </a> 
+                  <img src="/assets/preview.png" style="width: 40px;height: 40px;float: right;margin-right: 20px">                    
+                  <%= link_to '', user_posts_path(current_user) %>                    
                 </li>
-                <hr style="margin-left: 20px;margin-right: 20px;padding: 0">
-                <li role="presentation" style="padding-top: 15px">
-                  <%= link_to 'ngoctrang_nguyen_thi started following you.', user_posts_path(current_user) %>                    
-                </li>
-                <hr style="margin-left: 20px;margin-right: 20px;padding: 0">
-                <li role="presentation" style="padding-bottom: 15px">
-                  <%= link_to 'ngoctrang_nguyen_thi started following you.', user_posts_path(current_user) %>                    
+                 <li role="presentation" style="">
+                  <img src="/assets/preview.png" style="width: 40px;height: 40px; display: inline-block; margin: 0px 0px 0 10px">
+                  <a href="" style="padding: 15px !important;display: inline-block;">ngoctrang_nguyen_thi commented on your post.
+                  </a> 
+                  <img src="/assets/preview.png" style="width: 40px;height: 40px;float: right;margin-right: 20px">                    
+                  <%= link_to '', user_posts_path(current_user) %>                    
                 </li>
               </ul>
             </div>
@@ -50,7 +69,7 @@
               <ul class="dropdown-menu dropdown-menu-right" role="menu" aria-labelledby="menu">
                 <li role="presentation"><%= link_to 'My Posts', user_posts_path(current_user) %></li>
                 <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Activities Log</a></li>
-                <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Manager Account</a></li>
+                <li role="presentation"><a role="menuitem" tabindex="-1" href="/users/edit">Manager Account</a></li>
                 <li><%=  link_to "Sign Out", destroy_user_session_path, method: :delete %></li>
               </ul>
             </div>

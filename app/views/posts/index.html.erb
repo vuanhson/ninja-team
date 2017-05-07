@@ -1,0 +1,65 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-3">
+      <div class="block">
+        <ul class="theme-meta" style="list-style: none;padding: 0px;">
+          <li style="padding: 10px 30px 10px;">
+            <a class="title" href="/" style=" color: #777; text-decoration: none; ">
+              <h4>
+                <%= @user.user_name %>
+              </h4>
+            </a>
+          </li>
+          <li style="padding: 0px 30px 10px">
+            <% if current_user != @user %>
+              <div class="follow" id="follow_form" onclick="follow()" style="text-decoration: none">
+                <% if current_user.following?(@user) %>
+                  <%= render 'relationships/unfollow' %>
+                <% else %>
+                  <%= render 'relationships/follow' %>
+                <% end %>
+              </div>
+            <% end %>
+          </li>
+          <li style="padding: 0px 30px 10px">
+            <p id="followers" style=" color: #777;">
+              <%= @user.followers.count %>
+              followers
+            </p>
+          </li>
+          <li style="padding: 0px 30px 10px">
+            <p style=" color: #777;">
+              <%= @posts.count %>
+              <% if @posts.count > 0 %>
+                posts
+              <% else %>
+                post
+              <% end %>
+            </p>
+          </li>
+          <li style="padding: 0px 30px 10px">
+            <p style=" color: #777;">About</p>
+            <span>Co-Founder  Producer at YumYum</span>
+          </li>
+          <li style="padding: 0px 30px 10px">
+            <p style=" color: #777;">Interests</p>
+            <span>Seafood, Pizza, Cake</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="col-md-9">
+      <% if current_user == @user %>
+        <%= render 'form', post: @post %>
+      <% end %>
+      <% if @posts.count == 0 %>
+        <h3 style="color: #777">Empty</h3>
+      <% end %>
+      <hr style="max-width: 725px">
+        <% @posts.each do |post| %>
+          <%= render 'posts/post', post: post %>
+        <% end %>
+      </hr>
+    </div>
+  </div>
+</div>

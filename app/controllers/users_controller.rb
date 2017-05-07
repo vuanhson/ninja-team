@@ -1,14 +1,27 @@
 class UsersController < ApplicationController
-  def show
-  	@user = User.find(params[:id])
-  	@user_posts = @user.posts
-  	@posts = User.find(params[:id]).posts
-    @post = Post.new
-    @user = User.find(params[:id])
+  before_action :authenticate_user!
+  include EmojiHelper
+  
+  def show  	  
+    if User.exists?(id: params[:id])
+      @user = User.find(params[:id])
+      @posts = @user.posts.order("created_at desc")
+      @post = Post.new  
+    end    
+  	
   end
-  def edit
-  	@user = User.find(params[:id])
+
+  def feed 
+    
   end
+
+  def edit    
+    
+    if (current_user == @user)
+  	 @user = current_user
+    end
+  end
+
   def update
     @user = User.find(params[:id])
     if @user.update_attributes(user_params)
@@ -25,4 +38,8 @@ class UsersController < ApplicationController
       params.require(:user).permit(:user_name, :email, :password,
                                    :password_confirmation)
     end
+    def post_params
+      params.require(:post).permit(:user_id, :content, :file)
+    end
 end
+ 
