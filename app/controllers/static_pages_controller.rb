@@ -9,11 +9,15 @@ class StaticPagesController < ApplicationController
 	end
 
 	def search
-		
+		@users = User.where("user_name LIKE '%#{search_params[:content]}%'")
+		@posts = Post.where("content LIKE '%#{search_params[:content]}%'")
 	end
 
-	def preset_avatar
 
+	def preset_avatar
+		if current_user.sign_in_count > 1
+			redirect_to root_path
+		end
 	end
 
 	def preset_user_infor
@@ -23,5 +27,10 @@ class StaticPagesController < ApplicationController
 	def find_friend
 		
 	end
+
+	private
+	    def search_params
+	      params.require(:search).permit(:content)
+	    end
 
 end

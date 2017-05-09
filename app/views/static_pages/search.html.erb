@@ -19,52 +19,29 @@
 		<ul style="margin: 26px 0;padding: 0;border: solid 1px #dbdbdb; border-radius: 3px;width: 70%;display: inline-block;">
 			<li style="list-style: none; border-bottom: solid 1px #dbdbdb;margin: 20px">
 				<p style="float: left;font-family: 'Open Sans', sans-serif;font-weight: 700">People	</p>
-				<p style="text-align: right;font-family: 'Open Sans', sans-serif;">10 Results</p>
+				<p style="text-align: right;font-family: 'Open Sans', sans-serif;"><%= @users.count %> Results</p>
 			</li>
-			<li style="list-style: none; margin: 20px">
-				<div>
-					<img src="/assets/preview.png" style="width: 50px;height: 50px;margin-top: 10px;float: left;text-align: center;">
-					<ul style="margin: 20px">
-						<li style="list-style: none">
-							<a href="" style="text-decoration: none;font-family: 'Open Sans', sans-serif;font-weight: 700;font-size: 17px;line-height: 1.7;font-weight: bold;">
-								<span>Mai Xuan Toan</span>
-							</a>
-						</li>
-						<li style="list-style: none">
-							<span style="font-family: 'Open Sans', sans-serif;color: #6c7a8d">Co-Founder Producer at YumYum</span>
-							<button class="btn btn-success uppercase" style="background-color: #6c7a8d; border: 0px;float: right;">Follow</button>
-						</li>
-						<li style="list-style: none;border-bottom: 1px solid #dbdbdb;padding-bottom: 30px" >
-							<span style="font-family: 'Open Sans', sans-serif;">Interests: Seafood, Pizza, Cake</span>
-						</li>
-					</ul>
-				</div>			
-			</li>
-			<li style="list-style: none; margin: 20px">
-				<div>
-					<img src="/assets/preview.png" style="width: 50px;height: 50px;margin-top: 0px;float: left;margin-top: 10px;">
-					<div style="	">
-						<ul style="margin: 20px;">
-						<li style="list-style: none">
-							<a href="" style="text-decoration: none;font-family: 'Open Sans', sans-serif;font-weight: 700;font-size: 17px;line-height: 1.7;font-weight: bold;">
-								<span>Mai Xuan Toan</span>
-							</a>
-
-						</li>
-						<li style="list-style: none">
-							<span style="font-family: 'Open Sans', sans-serif;color: #6c7a8d">Co-Founder Producer at YumYum</span>
-							<button class="btn btn-success uppercase" style="background-color: #6c7a8d; border: 0px;float: right;">Follow</button>
-						</li>
-						<li style="list-style: none;padding-bottom: 30px" >
-							<span style="font-family: 'Open Sans', sans-serif;">Interests: Seafood, Pizza, Cake</span>
-						</li>
-							
-					</ul>	
-					</div>
-					
-					
-				</div>			
-			</li>
+			<% @users.each do |user| %>
+				<li style="list-style: none; margin: 20px">
+					<div>
+						<img src="/assets/preview.png" style="width: 50px;height: 50px;margin-top: 10px;float: left;text-align: center;">
+						<ul style="margin: 20px">
+						 	<li style="list-style: none">
+								<a href="" style="text-decoration: none;font-family: 'Open Sans', sans-serif;font-weight: 700;font-size: 17px;line-height: 1.7;font-weight: bold;">
+									<span><%= user.user_name %></span>
+								</a>
+							</li>
+							<li style="list-style: none">
+								<span style="font-family: 'Open Sans', sans-serif;color: #6c7a8d">Co-Founder Producer at YumYum</span>
+								<button class="btn btn-success uppercase" style="background-color: #6c7a8d; border: 0px;float: right;">Follow</button>
+							</li>
+							<li style="list-style: none;border-bottom: 1px solid #dbdbdb;padding-bottom: 30px" >
+								<span style="font-family: 'Open Sans', sans-serif;">Interests: Seafood, Pizza, Cake</span>
+							</li>
+						</ul>
+					</div>			
+				</li>
+			<% end %>
 			<p>View more results</p>
 		</ul>	
 		<div style="width: 28%;float: right;margin: 26px 10px;border: solid 1px #dbdbdb;border-radius: 3px">
@@ -77,45 +54,72 @@
 	
 	<ul style="margin: 26px 0;padding: 0;border: solid 1px #dbdbdb; border-radius: 3px;width: 70%;display: inline-block;">
 		<li style="list-style: none; border-bottom: solid 1px #dbdbdb;margin: 20px">
-			<p style="float: left;font-family: 'Open Sans', sans-serif;font-weight: 700">Restaurants	</p>
-			<p style="text-align: right;font-family: 'Open Sans', sans-serif;">3 Results</p>
+			<p style="float: left;font-family: 'Open Sans', sans-serif;font-weight: 700">Posts	</p>
+			<p style="text-align: right;font-family: 'Open Sans', sans-serif;"><%= @posts.count %> Results</p>
 		</li>
-		<li style="list-style: none; margin: 20px">
-			<div>
-				<img src="/assets/preview.png" style="width: 50px;height: 50px;margin-top: 10px;float: left;text-align: center;">
-				<ul style="margin: 20px">
-					<li style="list-style: none">
-						<a href="" style="text-decoration: none;font-family: 'Open Sans', sans-serif;font-weight: 700;font-size: 17px;line-height: 1.7;font-weight: bold;">
-							<span>King BBQ</span>
-						</a>
-					</li>
-					<li style="list-style: none">
-						<span style="font-family: 'Open Sans', sans-serif;color: #6c7a8d">123 Dong Da Hai Ba Trung Ha Noi</span>
-					</li>
-					<li style="list-style: none;border-bottom: 1px solid #dbdbdb;padding-bottom: 30px" >
-						<span style="font-family: 'Open Sans', sans-serif;">Serve: Seafood, Pizza, Cake</span>
-					</li>
-				</ul>
-			</div>			
-		</li>
-		<li style="list-style: none; margin: 20px">
-			<div>
-				<img src="/assets/preview.png" style="width: 50px;height: 50px;margin-top: 0px;float: left;margin-top: 10px;">
-				<ul style="margin: 20px">
-					<li style="list-style: none">
-						<a href="" style="text-decoration: none;font-family: 'Open Sans', sans-serif;font-weight: 700;font-size: 17px;line-height: 1.7;font-weight: bold;">
-							<span>Mai Xuan Toan</span>
-						</a>
-					</li>
-					<li style="list-style: none">
-						<span style="font-family: 'Open Sans', sans-serif;color: #6c7a8d">Co-Founder Producer at YumYum</span>
-					</li>
-					<li style="list-style: none;padding-bottom: 30px" >
-						<span style="font-family: 'Open Sans', sans-serif;">Interests: Seafood, Pizza, Cake</span>
-					</li>
-				</ul>
-			</div>			
-		</li>
+		<%= @posts.each do |post| %>
+			<li style="list-style: none; margin: 20px">
+				<div>
+					<div style="background-color: #fff;border: 1px solid #e6e6e6;border-radius: 3px;margin-left: -1px;
+margin-right: -1px;margin-top: 20px;margin-bottom: 20px">
+						  <div style="height: 64px;padding: 20px 20px;">
+						    <a href="" style="font-weight: 600;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;
+						padding-left: 5px;margin-left: -5px;"><%=  post.user.user_name%></a>
+						    <div class="dropdown1" style="float: right; margin-left: 10px">
+						      <img src="/assets/more.png" >
+						      <div class="dropdown-content1" style="background-color: #FFF">
+						        <p>Edit</p>
+						        <p>Delete</p>
+						      </div>
+						    </div>
+						    <a href="" style="float: right;"><%= post.created_at.strftime("%B %d, %Y") %></a>
+						  </div>
+						  <div style="position: relative;text-align: center;background-color: #1d2129; border: 1px solid #efefef;">
+						    <%= link_to  user_post_path(current_user, post),style: '' do %>
+						      <img src="<%= post.file %>" style="max-height: 600px"/>
+						    <% end %>  
+						  </div>
+						  
+						  <div class="post-content">
+						    <div style="padding: 0 24px">   
+						        <p id="likers" style="color: #262626;font-weight: 600;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;font-size: 15px;padding-top: 10px">
+						          <%= post.liking_users.count %> likes
+						        </p>                             
+						        <ul style="margin: 0px;padding: 0px">
+						          <li style="text-decoration: none;list-style: none;position: relative;word-wrap: break-word;margin-bottom: 20px">
+						              <a  style=" color: #262626;font-weight: 600;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;padding-left: 5px;margin-left: -5px;font-size: 15px">
+						              <%= post.user.user_name %> 
+						              </a>          
+						              <span style="font-family: 'Open Sans', sans-serif;"><%= sanitize post.content %> </span>             
+						          </li>
+						          <div id="comments_<%=post.id%>">
+						            <% post.comments.each do |comment| %>
+						              <%= render 'comments/comment', comment: comment %>                   
+						            <% end %>  
+						          </div>
+						        </ul>
+						        <hr>
+						                           
+						        <div class="" style="margin-bottom: 20px;">
+						          <div class="like_form_<%= post.id %>" id="like_form" style="max-width: 10%;display: inline-block">
+						            <% if current_user.liking?(post)%>
+						              <%= render 'likes/unlike' ,  post: post  %>
+						            <% else%> 
+						              <%= render 'likes/like' ,  post: post  %>
+						            <% end %>  
+						          </div>
+						          
+						          <div style="width: 80%;display: inline-block">
+						            <%= render 'comments/form' ,  post: post  %>
+						          </div>
+						        </div> 
+						    </div>
+						</div>
+
+						</div>
+				</div>			
+			</li>
+		<% end %>
 	</ul>
 	
 </div>
