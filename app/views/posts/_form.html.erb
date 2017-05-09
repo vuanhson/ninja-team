@@ -9,74 +9,37 @@
             <span style="position: relative;overflow: hidden;display: inline-block;">
                 <img src="/assets/picture.png">
                 <span>Upload a photo</span>
-                <%= f.fields_for :post_attachments do |p| %>
-
-                  <div class="field">
-                    <%= p.label :file %><br>
-                    <%= p.file_field :file,id: 'files', :multiple => true, name: "post_attachments[file][]" %>
-                  </div>
-                <% end %>
+                <%= f.file_field :file,id: 'files', style: 'position: absolute;top: 0;right: 0;margin: 0;opacity: 0;-ms-filter: alpha(opacity=0);font-size: 200px;direction: ltr;cursor: pointer;display: block;', onchange: 'readURL(this);' %> 
             </span>
           </div>
           <%= f.submit "Post", class: "btn btn-default", style: 'float: right; padding: 8px 30px' %>
         </div>
-        <output id="result" />
+        
+        <script>
+          function readURL(input) {
+            if (input.files && input.files[0]) {
+              var reader = new FileReader();
+
+              reader.onload = function (e) {
+                $('#img_prev')
+                  .attr('src', e.target.result)
+                  .width(80)
+                  .height(60);
+              };
+
+              reader.readAsDataURL(input.files[0]);
+            }
+          }
+        </script>
       </div>
     </div>
     
-    
+    <img id="img_prev" src="" style="margin: 20px" />
   <% end %>
 </div>
+
 <style>
   #food_food_photos_attributes_0_photo {
     display: block !important;
   }
 </style>
-<script type="text/javascript">
-  window.onload = function(){
-        
-    //Check File API support
-    if(window.File && window.FileList && window.FileReader)
-    {
-        var filesInput = document.getElementById("files");
-        
-        filesInput.addEventListener("change", function(event){
-            
-            var files = event.target.files; //FileList object
-            var output = document.getElementById("result");
-            
-            for(var i = 0; i< files.length; i++)
-            {
-                var file = files[i];
-                
-                //Only pics
-                if(!file.type.match('image'))
-                  continue;
-                <%%>
-                var picReader = new FileReader();
-                
-                picReader.addEventListener("load",function(event){
-                    
-                    var picFile = event.target;
-                    
-                    var div = document.createElement("div");
-                    div.style.display = 'inline-block';
-                    div.innerHTML = "<img class='thumbnail' style='width:70px;height:50px' src='" + picFile.result + "'" +
-                            "title='" + picFile.name + "'/>";
-                    
-                    output.insertBefore(div,null);            
-                
-                });
-                
-                 //Read the image
-                picReader.readAsDataURL(file);
-            }                               
-           
-        });
-    }
-    else
-    {
-        console.log("Your browser does not support File API");
-    }
-}
-</script>

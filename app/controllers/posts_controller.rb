@@ -20,7 +20,6 @@ class PostsController < ApplicationController
   # GET /posts/new
   def new
     @post = Post.new
-    @post_attachment = @post.post_attachments.build
   end
 
   # GET /posts/1/edit
@@ -31,11 +30,7 @@ class PostsController < ApplicationController
   # POST /posts.json
   def create
     @post = Post.new(post_params)
-
       if @post.save
-        params[:post_attachments]['file'].each do |a|
-          @post_attachment = @post.post_attachments.create!(:file => a, :post_id => @post.id)
-       end
         respond_to do |format|
           format.js {render layout: false}
           format.html { redirect_to user_path(current_user) }          
@@ -77,6 +72,6 @@ class PostsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def post_params
-      params.require(:post).permit(:user_id, :content,  post_attachments_attributes: [:id,     :post_id, :avatar])
+      params.require(:post).permit(:user_id, :content,  :file)
     end
 end

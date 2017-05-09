@@ -7,7 +7,6 @@ class UsersController < ApplicationController
       @user = User.find(params[:id])
       @posts = @user.posts.order("created_at desc")
       @post = Post.new  
-      @post_attachment = @post.post_attachments.build
     end    
   	
   end
