@@ -24,7 +24,7 @@
 			<% @users.each do |user| %>
 				<li style="list-style: none; margin: 20px">
 					<div>
-						<img src="/assets/preview.png" style="width: 50px;height: 50px;margin-top: 10px;float: left;text-align: center;">
+						<img src="" style="width: 50px;height: 50px;margin-top: 10px;float: left;text-align: center;">
 						<ul style="margin: 20px">
 						 	<li style="list-style: none">
 								<a href="" style="text-decoration: none;font-family: 'Open Sans', sans-serif;font-weight: 700;font-size: 17px;line-height: 1.7;font-weight: bold;">
@@ -42,7 +42,6 @@
 					</div>			
 				</li>
 			<% end %>
-			<p>View more results</p>
 		</ul>	
 		<div style="width: 28%;float: right;margin: 26px 10px;border: solid 1px #dbdbdb;border-radius: 3px">
 			<p style="margin: 20px 20px 0px 20px;font-family: 'Open Sans', sans-serif;font-weight: 700;border-bottom: 1px solid #dbdbdb;padding-bottom: 10px">Search</p>
@@ -76,7 +75,7 @@ margin-right: -1px;margin-top: 20px;margin-bottom: 20px">
 						  </div>
 						  <div style="position: relative;text-align: center;background-color: #1d2129; border: 1px solid #efefef;">
 						    <%= link_to  user_post_path(current_user, post),style: '' do %>
-						      <img src="<%= post.file %>" style="max-height: 600px"/>
+						      <img src="<%= post.file %>" style="max-width: 600px"/>
 						    <% end %>  
 						  </div>
 						  
