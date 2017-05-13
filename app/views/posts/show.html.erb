@@ -11,3 +11,44 @@
 	</div>
 	<% end %>
 </div>
+
+<p>
+  <strong> User: </strong>
+  <%= @post.user.user_name %>
+</p>
+
+<p>
+  <strong> Thoughts: </strong>:</strong>
+  <%= @post.content %>
+</p>
+
+<p>
+  <strong>Created at:</strong>
+  <%= @post.created_at %>
+</p>
+<p id="likers" style="color: #262626;font-weight: 600;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;font-size: 15px;padding-top: 10px">
+          <%= @post.liking_users.count %> likes
+        </p>
+
+</div>
+        <div class="" style="margin-bottom: 20px;">
+          <div class="like_form" id="like_form" style="max-width: 10%;display: inline-block">
+            <% if current_user.liking?(@post)%>
+              <%= render 'likes/unlike' ,  post: @post  %>
+            <% else%> 
+              <%= render 'likes/like' ,  post: @post  %>
+            <% end %>  
+          </div>
+          
+          <div style="width: 80%;display: inline-block">
+            <%= render 'comments/form' ,  post: @post  %>
+          </div>
+        </div> 
+
+<h3>comment list</h3>
+<ul>
+<% @post.comments.each do |comment|%>
+<li><%= comment.content %>
+(<i><%= comment.user_id %></i>)</li>
+<% end %>
+</ul>   
