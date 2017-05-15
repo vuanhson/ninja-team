@@ -1,22 +1,22 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
   include EmojiHelper
-  
-  def show  	  
+
+  def show
     if User.exists?(id: params[:id])
       @user = User.find(params[:id])
       @posts = @user.posts.order("created_at desc").limit(5)
-      @post = Post.new  
-    end    
-  	
+      @post = Post.new
+    end
+
   end
 
-  def feed 
-    
+  def feed
+
   end
 
-  def edit    
-    
+  def edit
+
     if (current_user == @user)
   	 @user = current_user
     end
@@ -26,7 +26,8 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     if @user.update_attributes(user_params)
       # Handle a successful update.
-      @posts = User.find(params[:id]).posts
+      @posts = @user.posts.order("created_at desc").limit(5)
+      @post = Post.new
       render 'show'
     else
       render 'edit'
@@ -36,10 +37,10 @@ class UsersController < ApplicationController
 
     def user_params
       params.require(:user).permit(:user_name, :email, :password,
-                                   :password_confirmation)
+                                   :password_confirmation, :avatar)
     end
     def post_params
       params.require(:post).permit(:user_id, :content, :file)
     end
 end
- 
+

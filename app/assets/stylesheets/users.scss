@@ -1,3 +1,46 @@
 // Place all the styles related to the users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.user-modal {
+  padding-top: 20px;
+
+  .modal-backdrop.in {
+    display: none;
+  }
+
+  .user-modal-dialog {
+    width: 45%;
+
+    .user-avatar {
+      width: 150px;
+      height: 150px;
+      margin-bottom: 10px;
+      display: inline-block;
+    }
+
+    input[type=file] {
+      display: inline-block;
+    }
+
+    .user-btn {
+      float: right;
+
+      .user-btn-cancel {
+        float: right;
+        margin-right: 10px;
+      }
+
+      .user-btn-save {
+        float: right;
+      }
+    }
+  }
+}
+
+
+.profile {
+  .user-image {
+    height: 100px;
+    width: 100px;
+  }
+}

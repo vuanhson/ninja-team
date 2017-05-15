@@ -5,23 +5,24 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # GET /resource/sign_up
   def new
     super
-    @user = User.create 
+    @user = User.create
   end
   # POST /resource
   def create
     @user = User.new(sign_up_params)
-     
+
       if @user.save
         sign_up(resource_name, resource)
         redirect_to get_started_avatar_path
-      end 
+      end
   end
-  
-  
+
+
   # PUT /resource
-  # def update
-  #   super
-  # end
+  def update
+    resource.update_attributes account_update_avatar
+    redirect_to root_path
+  end
 
   # DELETE /resource
   # def destroy
@@ -36,12 +37,17 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # def cancel
   #   super
   # end
-  private 
+  private
     def sign_up_params
-      params.require(:user).permit(:user_name, :address, :email, :password, :password_confirmation)
+      params.require(:user).permit(:user_name, :address, :email, :password,
+        :password_confirmation, :avatar)
     end
     def account_update_params
-      params.require(:user).permit(:user_name, :address, :email, :password, :password_confirmation, :current_password)
+      params.require(:user).permit(:user_name, :address, :email, :password,
+        :password_confirmation, :current_password, :avatar)
+    end
+    def account_update_avatar
+      params.require(:user).permit(:avatar) if params[:user]
     end
   protected
 

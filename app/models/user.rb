@@ -3,8 +3,8 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
-  
-  has_many :tags 
+
+  has_many :tags
 
   has_many :active_relationships, class_name:  "Relationship",
                                   foreign_key: "follower_id",
@@ -12,21 +12,21 @@ class User < ApplicationRecord
   has_many :passive_relationships, class_name:  "Relationship",
                                    foreign_key: "followed_id",
                                    dependent:   :destroy
-                                
-  has_many :following, through: :active_relationships, source: :followed          
+
+  has_many :following, through: :active_relationships, source: :followed
   has_many :followers, through: :passive_relationships, source: :follower
 
   has_many :relationships, :foreign_key => "follower_id",
-                           :dependent => :destroy                      
+                           :dependent => :destroy
 
   has_many :posts, dependent: :destroy
   has_many :active_likes, class_name: "Like",
                           foreign_key: "user_id",
                           dependent: :destroy
-  has_many :likes, :foreign_key => "user_id", :dependent => :destroy   
-  has_many :liking, through: :active_likes, source: :post                          
+  has_many :likes, :foreign_key => "user_id", :dependent => :destroy
+  has_many :liking, through: :active_likes, source: :post
   has_many :comments, dependent: :destroy
-  mount_uploader :file, ImageUploader
+  mount_uploader :avatar, AvatarUploader
   def follow(other_user)
     following << other_user
   end

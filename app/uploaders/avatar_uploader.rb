@@ -45,5 +45,7 @@ class AvatarUploader < CarrierWave::Uploader::Base
   # def filename
   #   "something.jpg" if original_filename
   # end
-
+  def default_url
+    "preview.png"
+  end
 end
