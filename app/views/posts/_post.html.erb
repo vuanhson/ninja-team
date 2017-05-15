@@ -6,8 +6,9 @@ padding-left: 5px;margin-left: -5px;"><%=  post.user.user_name%></a>
     <div class="dropdown1" style="float: right; margin-left: 10px">
       <img src="/assets/more.png" >
       <div class="dropdown-content1" style="background-color: #FFF">
-        <p>Edit</p>
-        <p>Delete</p>
+        <p data-toggle="modal" data-target="#post-modal-<%= post.id %>"
+          class="post-edit">Edit</p>
+        <p class="post-delete"><%= link_to "Delete", user_post_path(current_user, post), method: :delete, data: {confirm: "Are you sure?"} %></p>
       </div>
     </div>
     <a href="" style="float: right;"><%= post.created_at.strftime("%B %d, %Y") %></a>
@@ -15,44 +16,44 @@ padding-left: 5px;margin-left: -5px;"><%=  post.user.user_name%></a>
   <div style="position: relative;text-align: center;max-width: 600px;background-color: #1d2129; border: 1px solid #efefef;">
     <%= link_to  user_post_path(current_user, post),style: '' do %>
       <img src="<%= post.file %>" style="max-width: 600px">
-      
-    <% end %>  
+
+    <% end %>
   </div>
-  
+
   <div class="post-content">
-    <div style="padding: 0 24px">   
+    <div style="padding: 0 24px">
         <p id="likers_<%= post.id %>" style="color: #262626;font-weight: 600;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;font-size: 15px;padding-top: 10px">
           <%= post.liking_users.count %> likes
-        </p>                             
+        </p>
         <ul style="margin: 0px;padding: 0px">
           <li style="text-decoration: none;list-style: none;position: relative;word-wrap: break-word;margin-bottom: 20px">
               <a  style=" color: #262626;font-weight: 600;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;padding-left: 5px;margin-left: -5px;font-size: 15px">
-              <%= post.user.user_name %> 
-              </a>          
-              <span style="font-family: 'Open Sans', sans-serif;"><%= sanitize post.content %> </span>             
+              <%= post.user.user_name %>
+              </a>
+              <span style="font-family: 'Open Sans', sans-serif;"><%= sanitize post.content %> </span>
           </li>
           <div id="comments_<%=post.id%>">
             <% post.comments.each do |comment| %>
-              <%= render 'comments/comment', comment: comment %>                   
-            <% end %>  
+              <%= render 'comments/comment', comment: comment %>
+            <% end %>
           </div>
         </ul>
         <hr>
-                           
+
         <div class="" style="margin-bottom: 20px;">
           <div class="like_form" id="like_form_<%= post.id %>" style="max-width: 10%;display: inline-block">
             <% if current_user.liking?(post)%>
               <%= render 'likes/unlike' ,  post: post  %>
-            <% else%> 
+            <% else%>
               <%= render 'likes/like' ,  post: post  %>
-            <% end %>  
+            <% end %>
           </div>
-          
+
           <div style="width: 80%;display: inline-block">
             <%= render 'comments/form' ,  post: post  %>
           </div>
-        </div> 
+        </div>
     </div>
-</div>
-
+  </div>
+  <%= render "posts/edit_form", post: post %>
 </div>

@@ -65,7 +65,7 @@
 }
 
 /* Add Animation */
-.modal-content, #caption {    
+.modal-content, #caption {
     -webkit-animation-name: zoom;
     -webkit-animation-duration: 0.6s;
     animation-name: zoom;
@@ -73,12 +73,12 @@
 }
 
 @-webkit-keyframes zoom {
-    from {-webkit-transform:scale(0)} 
+    from {-webkit-transform:scale(0)}
     to {-webkit-transform:scale(1)}
 }
 
 @keyframes zoom {
-    from {transform:scale(0)} 
+    from {transform:scale(0)}
     to {transform:scale(1)}
 }
 
@@ -105,4 +105,53 @@
     .modal-content {
         width: 100%;
     }
+}
+
+.post-modal {
+  padding-top: 20px;
+
+  .modal-backdrop.in {
+    display: none;
+  }
+
+  .post-modal-dialog {
+    min-width: 70%;
+
+    .post-image {
+      margin-bottom: 10px;
+    }
+
+    .post-btn {
+      float: right;
+
+      .post-btn-cancel {
+        float: right;
+        margin-right: 10px;
+      }
+
+      .post-btn-save {
+        float: right;
+      }
+    }
+  }
+}
+
+
+.post-list {
+  .post-edit {
+    cursor: pointer;
+  }
+
+  .post-delete {
+    cursor: pointer;
+
+    a {
+      color: black !important;
+    }
+
+    a:-webkit-any-link {
+      cursor: auto;
+      text-decoration: none;
+    }
+  }
 }
