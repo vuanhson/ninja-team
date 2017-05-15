@@ -8,13 +8,13 @@ class PostsController < ApplicationController
     @user = User.find(params[:user_id])
     @posts = @user.posts
     @post = Post.new
-    
+
   end
 
   # GET /posts/1
   # GET /posts/1.json
   def show
-    @post_attachments = @post.post_attachments.all
+    # @post_attachments = @post.post_attachments.all
   end
 
   # GET /posts/new
@@ -33,10 +33,10 @@ class PostsController < ApplicationController
       if @post.save
         respond_to do |format|
           format.js {render layout: false}
-          format.html { redirect_to user_path(current_user) }          
+          format.html { redirect_to user_path(current_user) }
         end
       else
-        
+
       end
   end
 
@@ -46,6 +46,7 @@ class PostsController < ApplicationController
     respond_to do |format|
       if @post.update(post_params)
         format.html { redirect_to user_post_path(current_user, @post), notice: 'Post was successfully updated.' }
+        format.js {redirect_to user_post_path(current_user, @post),  notice: 'Post was successfully updated.' }
         format.json { render :show, status: :ok, location: @post }
       else
         format.html { render :edit }
