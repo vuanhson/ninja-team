@@ -20,14 +20,6 @@ ActiveRecord::Schema.define(version: 20170502075115) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "images", force: :cascade do |t|
-    t.integer  "user_id"
-    t.string   "title"
-    t.string   "file"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "likes", force: :cascade do |t|
     t.string   "user_id"
     t.string   "integer"
@@ -89,6 +81,7 @@ ActiveRecord::Schema.define(version: 20170502075115) do
     t.datetime "birth_day"
     t.string   "name"
     t.string   "phonenumber"
+    t.string   "avatar"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

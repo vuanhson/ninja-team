@@ -9,11 +9,12 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
   # POST /resource
   def create
-    super
     @user = User.new(sign_up_params)
      
-      @user.save
-       
+      if @user.save
+        sign_up(resource_name, resource)
+        redirect_to get_started_avatar_path
+      end 
   end
   
   

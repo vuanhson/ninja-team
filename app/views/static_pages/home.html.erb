@@ -4,18 +4,25 @@
         <div class="col-md-3">
         </div>
         <div class="col-md-9">
-              <div class="page-heading">
-        <div class="row">
-            <% if current_user !=nil%>
-                <%= render 'posts/form', post: @post %>
-            <% end %>
-            <div dir="post-list">
-                <% @posts.each do |post| %>
-                    <%= render 'posts/post', post: post %>
-                <% end %>    
-            </div>        
-        </div>    
-    </div>
+            <div class="page-heading">
+                <div class="row">
+                    <% if current_user !=nil%>
+                        <%= render 'posts/form', post: @post %>
+                    <% end %>
+                    <div id="post-list">
+                        <% @posts.each do |post| %>
+                            <%= render 'posts/post', post: post %>
+                        <% end %>    
+                    </div>        
+                </div>    
+            </div>
         </div>
     </div>
+</div>
+<div  class="container" style="width: 920px!important;text-align: center;" >
+        <!-- hide our loading gif image so that we show it when making ajax call via jquery -->
+
+    <%= image_tag "/assets/loading_spinner.gif", style: "display:none;width: 70px;heiht: 70px", class: "loading-gif" %>
+
+    <%= link_to "Load More", root_path, class: "load-more", style: "text-aligh: center;padding-bottom: 70px"%>
 </div>

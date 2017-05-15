@@ -26,7 +26,7 @@ class User < ApplicationRecord
   has_many :likes, :foreign_key => "user_id", :dependent => :destroy   
   has_many :liking, through: :active_likes, source: :post                          
   has_many :comments, dependent: :destroy
-  
+  mount_uploader :file, ImageUploader
   def follow(other_user)
     following << other_user
   end

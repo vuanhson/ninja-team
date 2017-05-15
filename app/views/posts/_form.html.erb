@@ -1,27 +1,51 @@
 <div style="border: 1px solid #e6e6e6;border-radius: 3px;width: 600px">
-  <%= form_for [:user, post],remote: true, :url => { :controller => "posts", :action => "create", user_id: current_user.id } do |f| %>
+  <%= form_for  [:user, post],remote: true, url: { controller: "posts", action: "create", user_id: current_user.id }, multipart: true do |f| %>
     <%= f.hidden_field :user_id, value: current_user.id %>
     <div>
       <div class="field " style="margin: 20px 20px ;padding-bottom: 10px">
         <%= f.text_area :content, style: 'border: solid 0px ;color: #262626;font-size: 14px;outline: none;padding: 3px 10px 3px 5px; width: 100%;resize: none;font-family: Open Sans, sans-serif;', placeholder: 'Write something' %>
         <div class="actions" style="border-top: solid 1px #dbdbdb;padding: 20px 20px">
           <div style="float: left;">
-          <span style="position: relative;overflow: hidden;display: inline-block;">
-            <img src="/assets/picture.png">
-            <span>Upload a photo</span>
-             <%= f.file_field :file, style: 'position: absolute;top: 0;right: 0;margin: 0;opacity: 0;-ms-filter: alpha(opacity=0);font-size: 200px;direction: ltr;cursor: pointer;display: block;' %>  
-             <div>
-              
-             </div>
-             
+            <span style="position: relative;overflow: hidden;display: inline-block;">
+                <img src="/assets/picture.png">
+                <span>Upload a photo</span>
+                <%= f.file_field :file,id: 'files', style: 'position: absolute;top: 0;right: 0;margin: 0;opacity: 0;-ms-filter: alpha(opacity=0);font-size: 200px;direction: ltr;cursor: pointer;display: block;', onchange: 'readURL(this);' %> 
             </span>
           </div>
           <%= f.submit "Post", class: "btn btn-default", style: 'float: right; padding: 8px 30px' %>
         </div>
+        
+        <script>
+          function readURL(input) {
+            if (input.files && input.files[0]) {
+              var reader = new FileReader();
 
+              reader.onload = function (e) {
+                $('#myImg')
+                  .attr('src', e.target.result)
+                  .width(80)
+                  .height(60);
+              };
+
+              reader.readAsDataURL(input.files[0]);
+            }
+          }
+        </script>
       </div>
     </div>
     
+    <img id="myImg" src="" style="margin: 20px" />
     
   <% end %>
+</div>
+
+<style>
+  #food_food_photos_attributes_0_photo {
+    display: block !important;
+  }
+</style>
+<div id="myModal" class="modal">
+  <span class="close">&times;</span>
+  <img class="modal-content" id="img01">
+  <div id="caption"></div>
 </div>

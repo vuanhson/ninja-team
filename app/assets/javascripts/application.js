@@ -13,4 +13,8 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
+//= require user
 //= require_tree .
+
+//= require jquery.uploadify
+
