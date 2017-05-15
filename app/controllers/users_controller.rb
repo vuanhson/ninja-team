@@ -5,7 +5,7 @@ class UsersController < ApplicationController
   def show  	  
     if User.exists?(id: params[:id])
       @user = User.find(params[:id])
-      @posts = @user.posts.order("created_at desc")
+      @posts = @user.posts.order("created_at desc").limit(5)
       @post = Post.new  
     end    
   	

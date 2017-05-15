@@ -1,5 +1,5 @@
-<div style="background-color: #fff;border: 1px solid #e6e6e6;border-radius: 3px;margin-left: -1px;
-margin-right: -1px;width: 603px;margin-top: 20px;margin-bottom: 20px">
+<div class="post-list" style="background-color: #fff;border: 1px solid #e6e6e6;border-radius: 3px;margin-left: -1px;
+margin-right: -1px;width: 603px;margin-top: 20px;margin-bottom: 20px" data-id="<%= post.created_at %>">
   <div style="height: 64px;padding: 20px 20px;">
     <a href="" style="font-weight: 600;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;
 padding-left: 5px;margin-left: -5px;"><%=  post.user.user_name%></a>
@@ -21,7 +21,7 @@ padding-left: 5px;margin-left: -5px;"><%=  post.user.user_name%></a>
   
   <div class="post-content">
     <div style="padding: 0 24px">   
-        <p id="likers" style="color: #262626;font-weight: 600;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;font-size: 15px;padding-top: 10px">
+        <p id="likers_<%= post.id %>" style="color: #262626;font-weight: 600;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;font-size: 15px;padding-top: 10px">
           <%= post.liking_users.count %> likes
         </p>                             
         <ul style="margin: 0px;padding: 0px">
@@ -40,7 +40,7 @@ padding-left: 5px;margin-left: -5px;"><%=  post.user.user_name%></a>
         <hr>
                            
         <div class="" style="margin-bottom: 20px;">
-          <div class="like_form" id="like_form" style="max-width: 10%;display: inline-block">
+          <div class="like_form" id="like_form_<%= post.id %>" style="max-width: 10%;display: inline-block">
             <% if current_user.liking?(post)%>
               <%= render 'likes/unlike' ,  post: post  %>
             <% else%> 

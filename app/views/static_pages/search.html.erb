@@ -27,13 +27,15 @@
 						<img src="" style="width: 50px;height: 50px;margin-top: 10px;float: left;text-align: center;">
 						<ul style="margin: 20px">
 						 	<li style="list-style: none">
-								<a href="" style="text-decoration: none;font-family: 'Open Sans', sans-serif;font-weight: 700;font-size: 17px;line-height: 1.7;font-weight: bold;">
+								<a href="/users/<%= user.id %>" style="text-decoration: none;font-family: 'Open Sans', sans-serif;font-weight: 700;font-size: 17px;line-height: 1.7;font-weight: bold;">
 									<span><%= user.user_name %></span>
 								</a>
 							</li>
 							<li style="list-style: none">
 								<span style="font-family: 'Open Sans', sans-serif;color: #6c7a8d">Co-Founder Producer at YumYum</span>
+								<% if current_user != user %>
 								<button class="btn btn-success uppercase" style="background-color: #6c7a8d; border: 0px;float: right;">Follow</button>
+								<%end %>
 							</li>
 							<li style="list-style: none;border-bottom: 1px solid #dbdbdb;padding-bottom: 30px" >
 								<span style="font-family: 'Open Sans', sans-serif;">Interests: Seafood, Pizza, Cake</span>

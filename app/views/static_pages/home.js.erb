@@ -1,0 +1,9 @@
+<% if @posts.length > 0 %>
+	<% @posts.each do |p|%>
+		$('#post-list').append("<%=j render 'posts/post', post: p %>")
+	<%end %>
+<%else%>	
+	$(".loading-gif").hide();
+	$(".load-more").hide();
+<%end%>
+

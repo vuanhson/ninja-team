@@ -5,5 +5,6 @@ class AddFieldToUser < ActiveRecord::Migration[5.0]
     add_column :users, :birth_day, :timestamps
     add_column :users, :name, :string
     add_column :users, :phonenumber, :string
+    add_column :users, :avatar, :string
   end
 end
