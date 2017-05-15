@@ -21,19 +21,26 @@
 				<p style="float: left;font-family: 'Open Sans', sans-serif;font-weight: 700">People	</p>
 				<p style="text-align: right;font-family: 'Open Sans', sans-serif;"><%= @users.count %> Results</p>
 			</li>
+			<% if @users.count == 0 %>
+				<li style="list-style: none; margin: 20px;padding-top: 20px 0 40px 0;text-align: center;">
+					<img src="/assets/search.png">
+					<h4 style="color: #dbdbdb">We coundn't find anyuser like this!</h4>
+				</li>
+			<% end %>
 			<% @users.each do |user| %>
 				<li style="list-style: none; margin: 20px">
 					<div>
 						<img src="" style="width: 50px;height: 50px;margin-top: 10px;float: left;text-align: center;">
 						<ul style="margin: 20px">
 						 	<li style="list-style: none">
-								<a href="/users/<%= user.id %>" style="text-decoration: none;font-family: 'Open Sans', sans-serif;font-weight: 700;font-size: 17px;line-height: 1.7;font-weight: bold;">
+								<a href="/users/<%= user.id %>" style="text-decoration: none;font-family: 'Open Sans', sans-serif;font-weight: 700;font-size: 17px;line-height: 1.7;font-weight: bold;color: #666;">
 									<span><%= user.user_name %></span>
 								</a>
 							</li>
 							<li style="list-style: none">
 								<span style="font-family: 'Open Sans', sans-serif;color: #6c7a8d">Co-Founder Producer at YumYum</span>
 								<% if current_user != user %>
+								<%= render 'relationships/follow_x', user: user%>
 								<button class="btn btn-success uppercase" style="background-color: #6c7a8d; border: 0px;float: right;">Follow</button>
 								<%end %>
 							</li>
@@ -58,14 +65,18 @@
 			<p style="float: left;font-family: 'Open Sans', sans-serif;font-weight: 700">Posts	</p>
 			<p style="text-align: right;font-family: 'Open Sans', sans-serif;"><%= @posts.count %> Results</p>
 		</li>
-		<%= @posts.each do |post| %>
+		<% if @posts.count == 0 %>
+				<li style="list-style: none; margin: 20px;padding-top: 20px 0 40px 0;text-align: center;">
+					<img src="/assets/search.png">
+					<h4 style="color: #dbdbdb">We coundn't find anypost like this!</h4>
+				</li>
+			<% end %>
+		<% @posts.each do |post| %>
 			<li style="list-style: none; margin: 20px">
 				<div>
-					<div style="background-color: #fff;border: 1px solid #e6e6e6;border-radius: 3px;margin-left: -1px;
-margin-right: -1px;margin-top: 20px;margin-bottom: 20px">
+					<div style="background-color: #fff;border: 1px solid #e6e6e6;border-radius: 3px;margin-left: -1px;margin-right: -1px;margin-top: 20px;margin-bottom: 20px">
 						  <div style="height: 64px;padding: 20px 20px;">
-						    <a href="" style="font-weight: 600;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;
-						padding-left: 5px;margin-left: -5px;"><%=  post.user.user_name%></a>
+						    <a href="" style="font-weight: 600;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;padding-left: 5px;margin-left: -5px;"><%=  post.user.user_name%></a>
 						    <div class="dropdown1" style="float: right; margin-left: 10px">
 						      <img src="/assets/more.png" >
 						      <div class="dropdown-content1" style="background-color: #FFF">

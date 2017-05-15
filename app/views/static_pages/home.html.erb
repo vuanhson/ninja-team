@@ -19,10 +19,12 @@
         </div>
     </div>
 </div>
-<div  class="container" style="width: 920px!important;text-align: center;" >
-        <!-- hide our loading gif image so that we show it when making ajax call via jquery -->
+<% if @posts.count >=5 %>
+    <div  class="container" style="width: 920px!important;text-align: center;" >
+            <!-- hide our loading gif image so that we show it when making ajax call via jquery -->
 
-    <%= image_tag "/assets/loading_spinner.gif", style: "display:none;width: 70px;heiht: 70px", class: "loading-gif" %>
+        <%= image_tag "/assets/loading_spinner.gif", style: "display:none;width: 70px;heiht: 70px", class: "loading-gif" %>
 
-    <%= link_to "Load More", root_path, class: "load-more", style: "text-aligh: center;padding-bottom: 70px"%>
-</div>
+        <%= link_to "Load More", root_path, class: "load-more", style: "text-aligh: center;padding-bottom: 70px"%>
+    </div>
+<% end %>

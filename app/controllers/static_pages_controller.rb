@@ -18,8 +18,8 @@ class StaticPagesController < ApplicationController
 	end
 
 	def search
-		@users = User.where("user_name LIKE '%#{search_params[:content]}%'")
-		@posts = Post.where("con`tent LIKE '%#{search_params[:content]}%'")
+		@users = User.where("user_name LIKE '%#{params[:search][:key]}%'")
+		@posts = Post.where("content LIKE '%#{params[:search][:key]}%'")
 	end
 
 
@@ -39,7 +39,7 @@ class StaticPagesController < ApplicationController
 
 	private
 	    def search_params
-	    	params.require(:search).permit(:content)
+	    	
 	    end
 
 	    def avatar_params

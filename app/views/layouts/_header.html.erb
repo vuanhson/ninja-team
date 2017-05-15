@@ -14,8 +14,8 @@
   font-family: 'Pacifico', cursive;margin-top: 40px;text-decoration: none"><span>YumYum</span> </a>  
       </div>
       <div style="display: inline-block;margin-left: 150px">
-            <%= form_for :search, url: search_path do |f| %>
-              <% f.text_field :content, style: 'padding: 5px;border-radius: 3px;border: solid 1px #dbdbdb;width: 250px', placeholder: 'Search...'%>
+            <%= form_for :search, url: search_path, :html => { :method => 'GET' } do |f| %>
+              <% f.text_field :key, style: 'padding: 5px;border-radius: 3px;border: solid 1px #dbdbdb;width: 250px', placeholder: 'Search...'%>
             <% end %>
       </div>
         

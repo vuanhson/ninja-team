@@ -27,6 +27,7 @@ $(document).ready(function () {
                 // show our load more link
                 $('.load-more').show();
             }
+            
         });
 
     });
