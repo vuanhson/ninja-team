@@ -1,7 +1,7 @@
 <div style="background: #fafafa;">
 	<div class="container" style="max-width: 920px!important;background: #fafafa;">
-		<a href="/"><button class="" style="float: right;    border: solid 1px #00ab6b;border-radius: 20px;
-		color: #1c9963;background-color: transparent;padding: 10px 20px;margin-top: 15px;">Finish</button></a>
+		<button class="user-signup-submit" style="float: right;    border: solid 1px #00ab6b;border-radius: 20px;
+		color: #1c9963;background-color: transparent;padding: 10px 20px;margin-top: 15px;">Finish</button>
 		<a href="/get_started/avatar"><button class="" style="float: right;    border: solid 1px #dbdbdb;border-radius: 20px;
 		color: #dbdbdb;background-color: transparent;padding: 10px 20px;margin: 15px 15px 0 0;">Back</button></a>
 
@@ -15,7 +15,7 @@
 						<path d="M8.3 4.2l6.4 6.3-6.4 6.3-.8-.8 5.5-5.5L7.5 5" fill-rule="evenodd"></path>
 					</svg>
 					</p>
-					
+
 				</span>
 			</small>
 			<small style="font-size: 15px;color: rgba(0,0,0,.44);">Tell us your interests</small>
@@ -32,25 +32,25 @@
 
 		</div>
 	</div>
-	
+
 </div>
 <div class="container" style="max-width: 920px!important;margin-top: 40px">
 	<h1 style="color: rgba(0,0,0,.8);font-size: 24px;line-height: 1.1; margin-bottom: 6px;    font-weight: 700;margin-bottom: 20px"">Setup your avatar</h1>
 	<%resource = current_user %>
-	<%resource_name = :user %>
-	<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+	<% resource_name = :user %>
+	<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :patch }) do |f| %>
 
 	  	<div style="">
-            <span style="position: relative;overflow: hidden;display: inline-block;">
-                <img id="myAvatar" src="/assets/add-image.png" style="margin-top: 34px;border: solid 3px #DBDBDB;">
-                <%= f.file_field :avatar,id: 'files', style: 'position: absolute;top: 0;right: 0;margin: 0;opacity: 0;-ms-filter: alpha(opacity=0);font-size: 200px;direction: ltr;cursor: pointer;display: block;', onchange: 'readURL(this);' %> 
-            </span>
+          <span style="position: relative;overflow: hidden;display: inline-block;">
+            <img id="myAvatar" src="/assets/add-image.png" style="margin-top: 34px;border: solid 3px #DBDBDB;">
+            <%= f.file_field :avatar ,id: 'files', style: 'position: absolute;top: 0;right: 0;margin: 0;opacity: 0;-ms-filter: alpha(opacity=0);font-size: 200px;direction: ltr;cursor: pointer;display: block;', onchange: 'readURL(this);' %>
+          </span>
         </div>
         <label style="margin-top: 8px">Pickup your avatar</label>
   <div class="actions">
 </div>
-  	
-<% end %> 
+
+<% end %>
 	<script>
           function readURL(input) {
             if (input.files && input.files[0]) {
@@ -67,7 +67,7 @@
             }
           }
         </script>
-	
+
 	<h1 style="color: rgba(0,0,0,.8);font-size: 24px;line-height: 1.1; margin-bottom: 6px;    font-weight: 700;margin-bottom: 20px"">Hey! Someone you know</h1>
 	<li style="list-style: none; margin: 20px">
 		<div>
@@ -86,7 +86,7 @@
 					<span style="font-family: 'Open Sans', sans-serif;">Interests: Seafood, Pizza, Cake</span>
 				</li>
 			</ul>
-		</div>			
+		</div>
 	</li>
 	<li style="list-style: none; margin: 20px">
 		<div>
@@ -105,6 +105,6 @@
 					<span style="font-family: 'Open Sans', sans-serif;">Interests: Seafood, Pizza, Cake</span>
 				</li>
 			</ul>
-		</div>			
+		</div>
 	</li>
 </div>
